@@ -73,7 +73,7 @@ if (!function_exists("formInput")) {
 					$attrs .= ' required ';
 				} elseif ($attribute === "events") {
 					$attrs .= ' '. $value .' ';
-				} elseif ($attribute !== "type" and $attribute !== "p" and $attribute !== "field") {
+				} elseif ($attribute !== "type" and $attribute !== "p" and $attribute !== "field" and $attribute !== "checked") {
 					if (!preg_match('/"/', $value)) {
 						$attrs .= ' '. strtolower($attribute) .'="'. $value .'"';
 					} else {
@@ -83,6 +83,8 @@ if (!function_exists("formInput")) {
 					$$attribute = $value;
 				}
 			}
+
+			$check = (isset($checked) and $checked) ? ' checked="checked"' : null;
 			
 			if (isset($type)) {
 				if ($type === "text") {
@@ -94,9 +96,9 @@ if (!function_exists("formInput")) {
 				} elseif ($type === "button") {
 					$HTML = ' <input'. $attrs .' type="button" /> ';
 				} elseif ($type === "checkbox") {
-					$HTML = ' <input'. $attrs .' type="checkbox" /> ';
+					$HTML = ' <input'. $attrs .' type="checkbox"'. $check .'/> ';
 				} elseif ($type === "radio") {
-					$HTML = ' <input'. $attrs .' type="radio" /> ';
+					$HTML = ' <input'. $attrs .' type="radio"'. $check .' /> ';
 				} elseif ($type === "file") {
 					$HTML = ' <input'. $attrs .' type="file" /> ';
 				} elseif ($type === "hidden") {

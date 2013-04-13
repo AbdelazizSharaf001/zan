@@ -55,7 +55,8 @@ jdPicker.DEFAULT_OPTS = {
   week_label: "",
   date_min: "",
   date_max: "",
-  date_format: "YYYY/mm/dd"
+  date_format: "YYYY/mm/dd",
+  placeholder: ""
 };
 jdPicker.prototype = {
   build: function() {
@@ -64,7 +65,7 @@ jdPicker.prototype = {
 
 	if(this.input.context.type!="hidden"){
 		var clearer = $('<span class="date_clearer">&times;</span>');
-		clearer.click(this.bindToObj(function(){this.input.val(""); this.selectDate();}));
+		clearer.click(this.bindToObj(function(){this.input.val(this.placeholder); this.selectDate();}));
 		this.input.after(clearer);
 	}
 	

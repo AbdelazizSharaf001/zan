@@ -32,15 +32,21 @@ if (!function_exists("string2Array")) {
 	}
 }
 
-if(!function_exists("array_push_after")) {
-	function array_push_after($src,$in,$pos)
+if(!function_exists("arrayPushAfter")) {
+	function arrayPushAfter($src, $in, $pos)
 	{
-	    if(is_int($pos)) $R=array_merge(array_slice($src,0,$pos+1), $in, array_slice($src,$pos+1));
-	    else{
-	        foreach($src as $k=>$v){
-	            $R[$k]=$v;
-	            if($k==$pos)$R=array_merge($R,$in);
+	    if (is_int($pos)) {
+	    	$r = array_merge(array_slice($src, 0, $pos + 1), $in, array_slice($src,$pos + 1));
+	    } else {
+	        foreach ($src as $k => $v) {
+	            $r[$k] = $v;
+	            
+	            if ($k == $pos) {
+	            	$r = array_merge($r, $in);
+	            }
 	        }
-	    }return $R;
+	    }
+
+	    return $r;
 	}
 }

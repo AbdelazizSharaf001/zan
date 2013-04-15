@@ -462,6 +462,7 @@ if (!function_exists("showContent")) {
 		$content = str_replace("[Ad:block]", '<p>'. getAd() .'</p>', $content);	
 		$content = str_replace('\"', '"', $content);
 		$content = str_replace("\'", "'", $content);
+		$content = str_replace("<a ", '<a rel="nofollow" ', $content);
 		$content = removeRareChars($content);
 
 		return setCode($content);		

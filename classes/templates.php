@@ -294,10 +294,29 @@ class ZP_Templates extends ZP_Load
 		} elseif ($js === "codemirror") {
 			if ($getJs) {
 				$js = '<script type="text/javascript" src="'. path("vendors/js/codemirror/codemirror.js", "zan") .'"></script>';
-				$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/util/loadmode.js", "zan") .'"></script>';
+				if (is_null($application)) {
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/util/loadmode.js", "zan") .'"></script>';
+				} elseif ($application === "php") {
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/htmlmixed.js", "zan") .'"></script>';
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/xml.js", "zan") .'"></script>';
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/javascript.js", "zan") .'"></script>';
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/css.js", "zan") .'"></script>';
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/clike.js", "zan") .'"></script>';
+					$js .= '<script type="text/javascript" src="'. path("vendors/js/codemirror/mode/php.js", "zan") .'"></script>';
+				}
 				return $js;
 			} else {
-				array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/codemirror.js', CORE_PATH .'/vendors/js/codemirror/util/loadmode.js');
+				array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/codemirror.js');
+				if (is_null($application)) {
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/util/loadmode.js');
+				} elseif ($application === "php") {
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/htmlmixed.js');
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/xml.js');
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/javascript.js');
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/css.js');
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/clike.js');
+					array_push($arrayJS, CORE_PATH .'/vendors/js/codemirror/mode/php.js');
+				}
 			}
 		} elseif (file_exists($js)) {
 			if ($getJs) {

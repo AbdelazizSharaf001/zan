@@ -75,7 +75,7 @@ if (!function_exists("getLanguage")) {
 		foreach ($languages as $language) {
 			if ($flags) {
 				if ($language["language"] === $lang) {
-					return '<span class="flag '. strtolower($language["lang"]) .'-flag"></span>';	
+					return '<span title="'. __($lang) .'" class="flag '. strtolower($language["lang"]) .'-flag"></span>';	
 				}
 			} else {
 				if ($language["language"] === $lang) {

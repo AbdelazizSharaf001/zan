@@ -310,6 +310,8 @@ if (!function_exists("htmlTag")) {
 	        
 	        if (! is_null($content)) {
 	            $HTML .= "$content</$tag>";
+	        } else {
+	        	$HTML .= "</$tag>";
 	        }
 	        
 	        return $HTML;

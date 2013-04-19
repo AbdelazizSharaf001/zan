@@ -238,7 +238,11 @@ if (!function_exists("p")) {
 	function p($text, $class = null)
 	{
 		if (is_string($text)) {
-			return '<p class="'. $class .'">'. $text .'</p>' ;
+			if (is_null($class)) {
+				return '<p>'. $text .'</p>';
+			} else {
+				return '<p class="'. $class .'">'. $text .'</p>' ;
+			}
 		} elseif ($text === true) {
 			if (is_null($class)) {
 				return '<p>';

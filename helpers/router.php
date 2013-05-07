@@ -252,7 +252,7 @@ if (!function_exists("getURL")) {
 			$URL .= ($i === (segments() - 1)) ? segment($i) : segment($i) ."/";
 		}
 
-		return path($URL);
+		return $URL;
 	}
 }
 

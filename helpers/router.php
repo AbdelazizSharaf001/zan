@@ -252,7 +252,9 @@ if (!function_exists("getURL")) {
 			$URL .= ($i === (segments() - 1)) ? segment($i) : segment($i) ."/";
 		}
 
-		return $URL;
+		$a = path($URL, false, false);
+		
+		return $a;
 	}
 }
 
@@ -325,6 +327,7 @@ if (!function_exists("path")) {
 		if ($lang) {
 			if ($lang !== true) {
 				$lang = getLang($lang);
+
 				return ($URL) ? _get("webURL") ."/". $path : _get("webBase") ."/". $lang ."/". $path . $anchor;
 			}
 
@@ -370,7 +373,7 @@ if (!function_exists("redirect")) {
 		if (!$time) {		
 			if (!$URL) {
 				header("location: ". path());
-			} elseif (substr($URL, 0, 7) !== "http://" and substr($URL, 0, 8) !== "https://") {
+			} elseif (substr($URL, 0, 7) !== "http://" and substr($URL, 0, 8) !== "https://") {				
 				header("location: ". path($URL));				
 				exit;
 			} else {

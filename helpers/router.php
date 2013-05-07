@@ -251,9 +251,8 @@ if (!function_exists("getURL")) {
 		for ($i = 0; $i <= segments() - 1; $i++) {		
 			$URL .= ($i === (segments() - 1)) ? segment($i) : segment($i) ."/";
 		}
-		
-		$URL = _get("webBase") ."/$URL";		
-		return $URL;
+
+		return path($URL);
 	}
 }
 
@@ -382,6 +381,13 @@ if (!function_exists("redirect")) {
 			$time = $time * 1000;			
 			echo '<script type="text/javascript">function delayedRedirect() { window.location.replace("'. $URL .'"); } setTimeout("delayedRedirect()", '. $time .'); </script>';
 		}
+	}
+}
+
+if (!function_exists("returnTo")) {
+	function returnTo($path, $var = "return_to")
+	{
+		return "?$var=". encode($path, true);
 	}
 }
 

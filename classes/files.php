@@ -374,7 +374,9 @@ class ZP_Files extends ZP_Load
         $data = base64_decode($base64);
 
         if (is_string($filename)) {
-        	file_put_contents($filename, $data, LOCK_EX);
+        	if (file_put_contents($filename, $data, LOCK_EX) === false) {
+        		return false;
+        	}
         	
         	if (file_exists($filename)) {
         		return true;

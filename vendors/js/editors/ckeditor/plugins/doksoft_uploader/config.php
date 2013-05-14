@@ -1,5 +1,6 @@
 <?php
-define("ACCESS", true);
+define("access", true);
+
 require_once('config.php');
 require_once('../../../../../../../www/dir.php');
 require_once('../../../../../../../www/config/config.php');
@@ -23,15 +24,15 @@ $config['Thumbnails'] = array(
 		'quality' 	=> 80);
 		
 $config['ResourceType']['Files'] = array(
-		'url' 				=> $baseUrl .'documents',
-		'directory' 		=> $baseDir .'documents',
+		'url' 				=> $baseUrl .'documents/uploads',
+		'directory' 		=> $baseDir .'documents/uploads',
 		'maxSize' 			=> 0, 
 		'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,
 		ods,odt,pdf,png,ppt,pptx,pxd,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,sitd,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip');
 
 $config['ResourceType']['Images'] = array(
-		'url' 				=> $baseUrl .'images',
-		'directory' 		=> $baseDir .'images',
+		'url' 				=> $baseUrl .'images/uploads',
+		'directory' 		=> $baseDir .'images/uploads',
 		'maxSize' 			=> 16 * 1024 * 1024, 
 		'allowedExtensions' => 'bmp,gif,jpeg,jpg,png');
 		

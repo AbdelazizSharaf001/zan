@@ -74,7 +74,7 @@ class ZP_Data extends ZP_Load
 					$count = ($count > 0) ? $count : 6;
 
 					if (strlen(POST($field)) < $count) {
-						return array("error" => getAlert(__("$field must have at least $count characters")));
+						return array("error" => getAlert( __("$field")." ".__("must have at least")." $count ".__("characters")));
 					}
 				} elseif (isset($field["exists"]) and isset($this->table)) {
 					if (is_array($validation)) {

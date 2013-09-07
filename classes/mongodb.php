@@ -59,17 +59,11 @@ class ZP_MongoDB extends ZP_Load
 	{
 		$this->collection = isset($collection) ? $collection : $this->collection;
 
-		if (is_object($this->Cursor)) {
-			return $this->Cursor->count();
+		if ($this->collection) {	
+	 		return $this->Mongo->selectCollection(DB_NOSQL_DATABASE, $collection)->count();	
 		} else {
-			if ($this->collection) {
-		 		$this->find();	 		
-		 		
-		 		return $this->Cursor->count();	
-			} else {
-				return false;
-			}
-		} 
+			return false;
+		}
 	}
 
 	public function countByQuery($query)

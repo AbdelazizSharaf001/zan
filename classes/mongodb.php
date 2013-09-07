@@ -55,13 +55,16 @@ class ZP_MongoDB extends ZP_Load
 		}									
 	}
 
-	public function countAll()
+	public function countAll($collection)
 	{
+		$this->collection = isset($collection) ? $collection : $this->collection;
+
 		if (is_object($this->Cursor)) {
 			return $this->Cursor->count();
 		} else {
 			if ($this->collection) {
 		 		$this->find();	 		
+		 		
 		 		return $this->Cursor->count();	
 			} else {
 				return false;
@@ -116,8 +119,9 @@ class ZP_MongoDB extends ZP_Load
 		} elseif ($safe) {
 			$options = array("safe" => true);
 		}
-	
+		
 		$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->remove($criteria, $options);
+
 		return true;
 	}
 	

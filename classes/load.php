@@ -114,11 +114,11 @@ class ZP_Load
 		if (strtolower($type) === "db") {
 			return $this->core("Db");
 		} elseif (strtolower($type) === "mongodb" or strtolower($type) === "mongo") {
-			return $this->core("MongoDB");
+			return (DB_NOSQL_ACTIVE) ? $this->core("MongoDB") : false;
 		} elseif (strtolower($type) === "couchdb" or strtolower($type) === "couch") {
-			return $this->core("CouchDB");
+			return (DB_NOSQL_ACTIVE) ? $this->core("CouchDB") : false;
 		} elseif (strtolower($type) === "cassandra") {
-			return $this->core("Cassandra");
+			return (DB_NOSQL_ACTIVE) ? $this->core("Cassandra") : false;
 		}
 	}
 

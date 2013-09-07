@@ -101,8 +101,10 @@ class ZP_MongoDB extends ZP_Load
 		return $data;
 	}
 
-	public function delete($criteria, $justOne = true, $safe = true)
+	public function delete($criteria, $collection, $justOne = true, $safe = true)
 	{	
+		$this->collection = isset($collection) ? $collection : $this->collection;
+
 		if (is_null($this->collection) or !$criteria) {
 			return false;
 		}
@@ -456,11 +458,11 @@ class ZP_MongoDB extends ZP_Load
  	public function insert($collection = null, $data = null, $_id = true)
  	{
  		if ($collection and is_array($data)) {
- 			$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $collection)->insert($data, $_id);
+ 			$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $collection)->insert($data, array("_id" => $_id));
  			
  			return true;
  		} elseif (is_array($this->data)) {
-			$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->insert($this->data, $_id);				
+			$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->insert($this->data, array("_id" => $_id));				
 			
 			unset($this->data);
 			

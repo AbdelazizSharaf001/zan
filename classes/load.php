@@ -445,8 +445,15 @@ class ZP_Load
 		} 
 
 		if (!is_null($application) and is_string($application) and is_string($name)) {
-			$view = "www/applications/$application/views/$name.php";
-			$minView = "www/applications/$application/views/min/$name.php";
+			$theme = _get("webTheme");
+
+			if (file_exists("www/lib/themes/$theme/views/$application/$name.php")) {
+				$view 	 = "www/lib/themes/$theme/views/$application/$name.php";
+				$minView = "www/lib/themes/$theme/views/$application/min/$name.php";
+			} else {
+				$view 	 = "www/applications/$application/views/$name.php";
+				$minView = "www/applications/$application/views/min/$name.php";
+			}
 
 			if (_get("environment") > 2 and file_exists($minView)) {
 				$view = $minView;

@@ -466,8 +466,20 @@ class ZP_Db extends ZP_Load
 				$query = "$this->select FROM $this->from $this->join $this->where LIMIT $limit, $offset";
 			}
 		}
+
+		$this->cleanUp();
 	
 		return $this->data($query);
+	}
+
+	public function cleanUp()
+	{
+		$this->select = null;
+		$this->from   = null;
+		$this->join   = null;
+		$this->where  = null;
+
+		return true;
 	}
 	
 	public function getTable($table)

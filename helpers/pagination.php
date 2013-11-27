@@ -62,6 +62,7 @@ if (!function_exists("paginate")) {
 
 			$pagination .= '	</ul>
 							</div>';
+							
 			return $pagination;
 		} else {
 			return '<div id="pagination">'. $pagePrevious . $pageNav . $pageNext .'</div>';

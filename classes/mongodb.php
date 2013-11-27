@@ -107,11 +107,11 @@ class ZP_MongoDB extends ZP_Load
 		}
 		
 		if ($justOne and $safe) {
-			$options = array("justOne" => true, "safe" => true);
+			$options = array("justOne" => true, "w" => true);
 		} elseif ($justOne) {
 			$options = array("justOne" => true);
 		} elseif ($safe) {
-			$options = array("safe" => true);
+			$options = array("w" => true);
 		}
 		
 		$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->remove($criteria, $options);

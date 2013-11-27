@@ -18,38 +18,40 @@ if (!function_exists("__")) {
 			global $Load, $phrase;
 			
 			$language = whichLanguage();
-			
-			if (file_exists("www/lib/languages/". strtolower($language) .".php")) {
-				include_once "www/lib/languages/". strtolower($language) .".php";
+			$languageFile = strtolower($language);
+
+			if (file_exists("www/lib/languages/". $languageFile .".php")) {
+				include_once "www/lib/languages/". $languageFile .".php";
 			} 
 
-			$position = strtolower(str_replace(" ", "_", $text)); 
-			$position = strtolower(str_replace("?,", "", $position));
-			$position = strtolower(str_replace("?", "", $position));
-			$position = strtolower(str_replace("!", "", $position));
-			$position = strtolower(str_replace("¡", "", $position));
-			$position = strtolower(str_replace("¿", "", $position));
-			$position = strtolower(str_replace(",", "", $position));
-			$position = strtolower(str_replace(":", "", $position));
-			$position = strtolower(str_replace("'", "", $position));
-			$position = strtolower(str_replace('"', "", $position));
-			$position = strtolower(str_replace(".", "", $position));
-			$position = strtolower(str_replace("&", "-", $position));
+			$position = strtolower($text);
+			$position = str_replace(" ", "_", $position); 
+			$position = str_replace("?,", "", $position);
+			$position = str_replace("?", "", $position);
+			$position = str_replace("!", "", $position);
+			$position = str_replace("¡", "", $position);
+			$position = str_replace("¿", "", $position);
+			$position = str_replace(",", "", $position);
+			$position = str_replace(":", "", $position);
+			$position = str_replace("'", "", $position);
+			$position = str_replace('"', "", $position);
+			$position = str_replace(".", "", $position);
+			$position = str_replace("&", "-", $position);
 			
 			if (isset($phrase[$position])) {
 				return ($encode) ? encode($phrase[$position]) : $phrase[$position];
 			} else {
 				if ($language !== "English" and !_get("production")) {
 					$content = "";
-					$logfile = "www/lib/languages/". strtolower($language) .".txt"; 
+					$logfile = "www/lib/languages/". $languageFile .".txt"; 
 					$today = date("d/m/Y");
 
 					if (file_exists($logfile)) {
 						$content = file_get_contents($logfile);
 					}
 
-					$file = fopen($logfile, "a+");
-					$pos = strrpos($content, "$today");
+					$file = @fopen($logfile, "a+");
+					$pos  = @strrpos($content, "$today");
 
 					if ($pos !== false) {
 						if (!@preg_match("/\\b" . addslashes($position) . "\\b/i", substr($content, $pos + 14))) {

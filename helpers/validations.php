@@ -76,13 +76,13 @@ if (!function_exists("isIP")) {
 	}
 }
 if (!function_exists("isSPAM")) {
-	function isSPAM($string, $max = 1)
+	function isSPAM($string, $max = 0)
 	{
 		$words = array(	
 			"www", ".co.uk", ".jp", ".ch", ".info", ".mobi", ".us", ".ca", ".ws", ".ag", 
 			".com.co", ".net.co", ".com.ag", ".net.ag", ".it", ".fr", ".tv", ".am", ".asia", ".at", ".be", ".cc", ".de", ".es", ".com.es", ".eu", 
 			".fm", ".in", ".tk", ".com.mx", ".nl", ".nu", ".tw", ".vg", "sex", "porn", "fuck", "buy", "free", "dating", "viagra", "money", "dollars", 
-			"payment", "website", "games", "toys", "poker", "cheap"
+			"payment", "website", "games", "toys", "poker", "cheap", "[url]", "[/url]", "[url="
 		);
 						
 	    $count = 0;

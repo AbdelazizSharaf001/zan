@@ -53,6 +53,7 @@ if (!function_exists("bbCode")) {
 		$text = preg_replace('/<p><pre>(.*?)<\/pre><\/p>/ms', "<pre>\\1</pre>", $text);
 		$text = preg_replace_callback('/<ul>(.*?)<\/ul>/ms', "removeBr", $text);
 		$text = preg_replace('/<p><ul>(.*?)<\/ul><\/p>/ms', "<ul>\\1</ul>", $text);
+		
 		return $text;
 	}
 }
@@ -189,17 +190,17 @@ if (!function_exists("exploding")) {
 			if ($count > 0) {
 				for ($i = 0; $i <= $count; $i++) {
 					if (!is_null($URL)) {
-						if ($i === $count) {
+						if ($i == $count) {
 							$return .= '<a href="'. path($URL . slug($parts[$i])) .'" title="'. $parts[$i] .'">'. $parts[$i] .'</a>';
-						} elseif ($i === $count - 1) {
+						} elseif ($i == $count - 1) {
 							$return .= '<a href="'. path($URL . slug($parts[$i])) .'" title="'. $parts[$i] .'">'. $parts[$i] .'</a> '. __("and") .' ';
 						} else {
 							$return .= '<a href="'. path($URL . slug($parts[$i])) .'" title="'. $parts[$i] .'">'. $parts[$i] .'</a>, ';
 						}
 					} else {
-						if ($i === $count) {
+						if ($i == $count) {
 							$return .= $parts[$i];
-						} elseif ($i === $count - 1) {
+						} elseif ($i == $count - 1) {
 							$return .= $parts[$i] .' '. __("and") .' ';
 						} else {
 							$return .= $parts[$i] .', ';
@@ -307,6 +308,7 @@ if (!function_exists("filter")) {
 		$text = str_replace("%22", "", $text);
 		$text = str_replace("%20", "", $text);
 		$text = str_replace("indexphp", "index.php", $text);
+		
 		return $text;
 	}
 }
@@ -314,11 +316,10 @@ if (!function_exists("filter")) {
 if (!function_exists("quotes")) {
 	function quotes($text)
 	{
-		$text = str_replace("?s", "'s", $text);
-		$text = str_replace("?m", "'m", $text);
-		$text = str_replace("?t", "'t", $text);
-		$text = str_replace("s?", "s", $text); 
-		return stripslashes($text);
+		$text = str_replace("&#39;", "\'", $text);
+		$text = str_replace("&quot;", '\"', $text);
+
+		return $text;
 	}
 }
 
@@ -532,6 +533,18 @@ if (!function_exists("repeat")) {
 if (!function_exists("slug")) {
 	function slug($string)
 	{		
+		$specialWords = array(
+			"C++" 			=> "cpp",
+			"C/C++" 		=> "c-cpp",
+			"Node.js" 	 	=> "nodejs",
+			"Backbone.js" 	=> "backbonejs",
+			"Angular.js"  	=> "angularjs"
+		);
+
+		if (array_key_exists($string, $specialWords)) {
+			return $specialWords[$string];
+		} 		
+
 		$characters = array(
 			"Á" => "A", "Ç" => "c", "É" => "e", "Í" => "i", "Ñ" => "n", "Ó" => "o", "Ú" => "u", "á" => "a", "ç" => "c", 
 			"é" => "e", "í" => "i", "ñ" => "n", "ó" => "o", "ú" => "u", "à" => "a", "è" => "e", "ì" => "i", "ò" => "o", 
@@ -597,8 +610,10 @@ if (!function_exists("POST")) {
 			}
 		}
 
-		if ($coding === "clean") {
-			return isset($_POST[$position]) ? $_POST[$position] : FALSE;
+		if ($coding === "clenHTML") {
+			return isset($_POST[$position]) ? cleanHTML($_POST[$position]) : false;
+		} elseif ($coding === "clean") {
+			return isset($_POST[$position]) ? $_POST[$position] : false;
 		} elseif ($position === true) {		
 			return $_POST;
 		} elseif (!$position) {
@@ -825,7 +840,7 @@ if (!function_exists("REQUEST")) {
 if (!function_exists("recoverPOST")) {
 	function recoverPOST($position, $value = null)
 	{ 
-		if (is_null($value)) {
+		if (is_null($value)) { 
 			return (is_array(POST($position))) ? POST($position) : (POST($position) ? htmlentities(POST($position, "decode", false)) : null);
 		} else { 
 			if (is_array($value)) {
@@ -840,11 +855,11 @@ if (!function_exists("recoverPOST")) {
 				
 				return $data;
 			} else { 
-				if ($position === "content") {
+				if ($position == "content") {
 					return (POST($position)) ? POST($position, "decode", false) : decode($value);
 				}
 
-				return (POST($position)) ? htmlentities(POST($position, "decode", false)) : htmlentities(decode($value));
+				return (POST($position)) ? htmlentities(POST($position, "decode", false)) : htmlentities($value);
 			}	
 		}
 	}

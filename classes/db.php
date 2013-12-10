@@ -226,6 +226,10 @@ class ZP_Db extends ZP_Load
 		if ($table) {
 			$this->table($table);
 		}
+
+		if (DB_PDO) {
+			return $this->Database->query("DELETE * FROM $this->table WHERE $SQL");
+		}
 		
 		return $this->Database->deleteBySQL($this->table, $SQL);
 	}
@@ -337,6 +341,7 @@ class ZP_Db extends ZP_Load
 		}
 
 		$query = "SELECT $this->fields FROM $this->table$SQL";
+		
 		return $this->data($query);
 	}
 		
@@ -545,6 +550,12 @@ class ZP_Db extends ZP_Load
 		} else {
 			return false;
 		}	
+
+		if (DB_PDO) {			
+			$this->Rs = $this->Database->exec($query);
+
+			return $this->Database->lastInsertId();
+		}
 		
 		$this->Rs = $this->Database->insert($table, $_fields, $_values);
 
@@ -929,14 +940,14 @@ class ZP_Db extends ZP_Load
 				$query = "UPDATE $table SET $fields";
 			}
 		}
-
+		
 		$this->Rs = $this->Database->query($query);
 		
 		if ($this->Rs) {
 			return true;
+		} else {
+			return array("error" => $query);
 		}
-
-		return false;
 	}
 
 	public function updateBySQL($table = null, $SQL = null)
@@ -951,6 +962,12 @@ class ZP_Db extends ZP_Load
 		}
 
 		$table = $this->getTable($table);
+
+		if (DB_PDO) {			
+			$query = "UPDATE $table SET $SQL";
+
+			return ($this->Database->exec($query)) ? true : false;;
+		}
 
 		return $this->Database->updateBySQL($table, $SQL);
 	}

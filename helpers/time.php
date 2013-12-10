@@ -101,11 +101,18 @@ if (!function_exists("howLong")) {
 
 		$time = time() - $value;
 		
-		if ($time >= 2116800) {
-			$date = __("on") ." ". now(2);
-		}
+		if ($time > 30242054.045) {
+			$date = date("d/M/Y", $value);
+			$parts = explode("/", $date);
 
-		if ($time < 30242054.045) {
+			$month = getMonth($parts[1], $language);
+
+			if ($language == "Spanish") {
+				$date = __("on") ." ". $parts[0] ."/". $month ."/". $parts[2];
+			} else {
+				$date = __("on") ." ". $month ."/". $parts[0] ."/". $parts[2];
+			}
+		} elseif ($time < 30242054.045) {
 			$rTime = round($time / 2629743.83);
 			
 			if ($rTime > 1) {
@@ -370,6 +377,28 @@ if (!function_exists("now")) {
 			return date("Y-m-d", time());
 		} else {
 			return date("d/m/Y", time());				  
+		}
+	}
+}
+
+if (!function_exists("getMonth")) {
+	function getMonth($month, $language)
+	{
+		switch ($month) {
+			case 'Jan':
+				return ($language == "Spanish") ? "Ene" : $month;
+				break;
+			case 'Apr':
+				return ($language == "Spanish") ? "Abr" : $month;
+				break;
+			case 'Aug':
+				return ($language == "Spanish") ? "Ago" : $month;
+				break;
+			case 'Dec':
+				return ($language == "Spanish") ? "Dic" : $month;
+				break;
+			default:
+				return $month;
 		}
 	}
 }

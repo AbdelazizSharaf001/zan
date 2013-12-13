@@ -228,7 +228,7 @@ class ZP_Db extends ZP_Load
 		}
 
 		if (DB_PDO) {
-			return $this->Database->query("DELETE * FROM $this->table WHERE $SQL");
+			return $this->Database->query("DELETE FROM $this->table WHERE $SQL");
 		}
 		
 		return $this->Database->deleteBySQL($this->table, $SQL);

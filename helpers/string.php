@@ -465,8 +465,16 @@ if (!function_exists("showContent")) {
 		$content = str_replace("\'", "'", $content);
 		$content = str_replace("<a ", '<a rel="nofollow" ', $content);
 		$content = removeRareChars($content);
+		$content = str_replace("{{CDN_SERVER}}", getCDN(), $content);
 
 		return setCode($content);		
+	}
+}
+
+if (!function_exists("replaceCDN")) {
+	function replaceCDN($content)
+	{
+		return str_replace("{{CDN_SERVER}}", getCDN(), $content);
 	}
 }
 

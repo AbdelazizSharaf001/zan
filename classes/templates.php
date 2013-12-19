@@ -407,7 +407,7 @@ class ZP_Templates extends ZP_Load
 	{
 		$this->theme = (is_null($theme)) ? _get("webTheme") : $theme;
 		$this->themeRoute = "www/lib/themes/$this->theme";
-		$this->themePath = _get("webURL") . "/$this->themeRoute";
+		$this->themePath = (_get("environment") == 1) ? _get("webURL") ."/$this->themeRoute" : getCDN() ."/$this->themeRoute";
 		
 		if (!$this->isTheme()) {
 			die("You need to create a valid theme");

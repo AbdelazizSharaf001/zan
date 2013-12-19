@@ -307,6 +307,26 @@ if (!function_exists("whichApplication")) {
 	}
 }
 
+if (!function_exists("addCDN")) {
+	function addCDN($content) 
+	{
+		$server = _get("webServer");
+		$cdnServers = _get("cdnServers");
+
+		if (is_array($cdnServers) and count($cdnServers) > 0) {
+			$servers = count($cdnServers) - 1;
+
+			for ($i = 0; $i <= $servers; $i++) {
+				$content = str_replace($cdnServers[$i] ."/www", "{{CDN_SERVER}}/www", $content);				
+			}
+		}
+
+		$content = str_replace($server ."/www", "{{CDN_SERVER}}/www", $content);
+
+		return $content;
+	}
+}
+
 if (!function_exists("getCDN")) {
 	function getCDN() 
 	{

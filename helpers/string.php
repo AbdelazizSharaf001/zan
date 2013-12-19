@@ -872,9 +872,9 @@ if (!function_exists("recoverPOST")) {
 				}
 
 				if (POST($position)) {
-					return _get("isOnline") ? "a" : "b";
+					return _get("isOnline") ? htmlentities(decode(POST($position))) : htmlentities(POST($position));
 				} else {
-					return _get("isOnline") ? "c" : "d";
+					return _get("isOnline") ? htmlentities(decode($value)) : htmlentities($value);
 				}
 			}	
 		}

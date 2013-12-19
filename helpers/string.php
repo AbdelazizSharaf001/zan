@@ -867,7 +867,11 @@ if (!function_exists("recoverPOST")) {
 					return (POST($position)) ? POST($position, "decode", false) : decode($value);
 				}
 
-				return (POST($position)) ? htmlentities(POST($position, "decode", false)) : htmlentities($value);
+				if (POST($position)) {
+					return htmlentities(POST($position, "decode", false));
+				} else {
+					return _get("online") ? decode(htmlentities($value)) : htmlentities($value);
+				}
 			}	
 		}
 	}

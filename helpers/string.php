@@ -852,7 +852,7 @@ if (!function_exists("recoverPOST")) {
 			if (is_array(POST($position))) { 
 				return POST($position); 
 			} elseif (POST($position)) {
-				return _get("isOnline") ? "a" : "b";
+				return _get("isOnline") ? htmlentities(decode(POST($position))) : htmlentities(POST($position));
 			}
 		} else { 
 			if (is_array($value)) {
@@ -872,7 +872,7 @@ if (!function_exists("recoverPOST")) {
 				}
 
 				if (POST($position)) {
-					return htmlentities(POST($position, "decode", false));
+					return _get("isOnline") ? htmlentities(decode(POST($position))) : htmlentities(POST($position));
 				} else {
 					return _get("isOnline") ? htmlentities(decode($value)) : htmlentities($value);
 				}

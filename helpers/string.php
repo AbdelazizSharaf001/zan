@@ -874,7 +874,7 @@ if (!function_exists("recoverPOST")) {
 				if (POST($position)) {
 					return _get("isOnline") ? "a" : "b";
 				} else {
-					return _get("isOnline") ? htmlentities(decode($value)) : htmlentities($value);
+					return _get("isOnline") ? "c" : "d";
 				}
 			}	
 		}

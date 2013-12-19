@@ -896,9 +896,9 @@ if (!function_exists("removeSpaces")) {
 }
 
 if (!function_exists("social")) {
-	function social($type = "small")
+	function social($type = "horizontal")
 	{
-		if ($type == "small") {
+		if ($type == "horizontal") {
 			return '<span class="st_facebook_hcount" displayText="Facebook"></span>
 					<span class="st_twitter_hcount" displayText="Tweet"></span>
 					<span class="st_linkedin_hcount" displayText="LinkedIn"></span>

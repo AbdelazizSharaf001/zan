@@ -851,7 +851,7 @@ if (!function_exists("recoverPOST")) {
 		if (is_null($value)) { 
 			if (is_array(POST($position))) { 
 				return POST($position); 
-			} elseif (POST($position) {
+			} elseif (POST($position)) {
 				return _get("isOnline") ? htmlentities(decode(POST($position))) : htmlentities(POST($position));
 			}
 		} else { 

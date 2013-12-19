@@ -870,7 +870,7 @@ if (!function_exists("recoverPOST")) {
 				if (POST($position)) {
 					return htmlentities(POST($position, "decode", false));
 				} else {
-					return _get("online") ? decode(htmlentities($value)) : htmlentities($value);
+					return _get("online") ? "a" : "b";
 				}
 			}	
 		}

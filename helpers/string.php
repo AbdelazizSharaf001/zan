@@ -898,14 +898,11 @@ if (!function_exists("removeSpaces")) {
 if (!function_exists("social")) {
 	function social($URL, $content, $facebook = true, $twitter = true, $gPlus = true, $linkedin = true, $float = false)
 	{
-		$float = ($float) ? " float-right" : null;
-		$HTML  = '<div class="social'. $float .'">';
-		$HTML .= ($facebook) ? ' <div class="fb-like" data-href="'. $URL .'" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true" data-font="lucida grande"></div>' : "";
-		$HTML .= ($twitter) ? ' <a href="https://twitter.com/share" class="twitter-share-button" data-url="'. $URL .'" data-text="'. $content .'" data-via="'. VIA .'" data-lang="'. _get("webLang") .'">Tweet</a>' : "";
-		$HTML .= ($gPlus) ? ' <div class="g-plusone" data-size="medium" data-href="'. $URL .'"></div>' : "";
-		$HTML .= ($linkedin) ? ' <script type="IN/Share" data-url="'. $URL .'" data-counter="right"></script>' : "";
-		$HTML .= '</div>';
-		return $HTML;
+		return '<span class="st_facebook_vcount" displayText="Facebook"></span>
+				<span class="st_twitter_vcount" displayText="Tweet"></span>
+				<span class="st_linkedin_vcount" displayText="LinkedIn"></span>
+				<span class="st_delicious_vcount" displayText="Delicious"></span>
+				<span class="st_tumblr_vcount" displayText="Tumblr"></span>';
 	}
 }
 

@@ -896,13 +896,23 @@ if (!function_exists("removeSpaces")) {
 }
 
 if (!function_exists("social")) {
-	function social($URL, $content, $facebook = true, $twitter = true, $gPlus = true, $linkedin = true, $float = false)
+	function social($type = "small")
 	{
-		return '<span class="st_facebook_vcount" displayText="Facebook"></span>
-				<span class="st_twitter_vcount" displayText="Tweet"></span>
-				<span class="st_linkedin_vcount" displayText="LinkedIn"></span>
-				<span class="st_delicious_vcount" displayText="Delicious"></span>
-				<span class="st_tumblr_vcount" displayText="Tumblr"></span>';
+		if ($type == "small") {
+			return '<span class="st_facebook_hcount" displayText="Facebook"></span>
+					<span class="st_twitter_hcount" displayText="Tweet"></span>
+					<span class="st_linkedin_hcount" displayText="LinkedIn"></span>
+					<span class="st_delicious_hcount" displayText="Delicious"></span>
+					<span class="st_tumblr_hcount" displayText="Tumblr"></span>
+					<span class="st_plusone_hcount" displayText="Google +1"></span>';
+		} else {
+			return '<span class="st_facebook_vcount" displayText="Facebook"></span>
+					<span class="st_twitter_vcount" displayText="Tweet"></span>
+					<span class="st_linkedin_vcount" displayText="LinkedIn"></span>
+					<span class="st_delicious_vcount" displayText="Delicious"></span>
+					<span class="st_tumblr_vcount" displayText="Tumblr"></span>
+					<span class="st_plusone_vcount" displayText="Google +1"></span>';
+		}
 	}
 }
 

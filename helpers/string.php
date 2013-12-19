@@ -902,8 +902,6 @@ if (!function_exists("social")) {
 			return '<span class="st_facebook_hcount" displayText="Facebook"></span>
 					<span class="st_twitter_hcount" displayText="Tweet"></span>
 					<span class="st_linkedin_hcount" displayText="LinkedIn"></span>
-					<span class="st_delicious_hcount" displayText="Delicious"></span>
-					<span class="st_tumblr_hcount" displayText="Tumblr"></span>
 					<span class="st_plusone_hcount" displayText="Google +1"></span>';
 		} else {
 			return '<span class="st_facebook_vcount" displayText="Facebook"></span>

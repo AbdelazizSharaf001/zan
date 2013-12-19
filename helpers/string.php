@@ -849,7 +849,11 @@ if (!function_exists("recoverPOST")) {
 	function recoverPOST($position, $value = null)
 	{ 
 		if (is_null($value)) { 
-			return (is_array(POST($position))) ? POST($position) : (POST($position) ? htmlentities(POST($position, "decode", false)) : null);
+			if (is_array(POST($position))) { 
+				return POST($position); 
+			} elseif (POST($position) {
+				return _get("isOnline") ? htmlentities(decode(POST($position))) : htmlentities(POST($position));
+			}
 		} else { 
 			if (is_array($value)) {
 				foreach ($value as $val) {

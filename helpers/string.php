@@ -3,6 +3,12 @@ if (!defined("ACCESS")) {
 	die("Error: You don't have permission to access here...");
 }
 
+if(!function_exists("checkSpelling")) {
+	function checkSpelling($language = "Spanish") {
+		$words = include "www/lib/languages/spelling/";
+	}
+}
+
 if (!function_exists("bbCode")) {
 	function bbCode($text) {
 		$text = trim($text);

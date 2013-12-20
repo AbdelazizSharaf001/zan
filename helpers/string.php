@@ -466,6 +466,7 @@ if (!function_exists("showContent")) {
 		$content = str_replace("<a ", '<a rel="nofollow" ', $content);
 		$content = removeRareChars($content);
 		$content = str_replace("{{CDN_SERVER}}", getCDN(), $content);
+		$content = str_replace("<p>&nbsp;</p>", "", $content);
 
 		return setCode($content);		
 	}

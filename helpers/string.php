@@ -28,6 +28,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("  ,", ", ", $text);
 				$text = str_replace(" :", ": ", $text);
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
+				$text = str_replace('<p>&nbsp;</p>', "", $text);
 			}
 		}
 

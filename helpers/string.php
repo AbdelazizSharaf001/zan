@@ -5,7 +5,7 @@ if (!defined("ACCESS")) {
 
 if(!function_exists("checkSpelling")) {
 	function checkSpelling($language = "Spanish") {
-		$words = include "www/lib/languages/spelling/";
+		$words = include "www/lib/languages/spelling/spanish.php";
 	}
 }
 

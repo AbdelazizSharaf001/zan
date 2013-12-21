@@ -4,8 +4,34 @@ if (!defined("ACCESS")) {
 }
 
 if(!function_exists("checkSpelling")) {
-	function checkSpelling($language = "Spanish") {
-		$words = include "www/lib/languages/spelling/spanish.php";
+	function checkSpelling($text) {
+		$language = whichLanguage();
+		
+		if (_get("verifySpelling") and $language == "Spanish") {
+			$words = include "www/lib/languages/spelling/spanish.php";
+				
+			foreach ($words as $wrongWord => $correctWord) {
+				$uWrongWord = ucfirst($wrongWord);
+				$uCorrectWord = ucfirst($correctWord);
+
+				$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
+				$text = str_replace(" $uWrongWord.", " $uCorrectWord.", $text);
+				$text = str_replace(" $uWrongWord,", " $uCorrectWord,", $text);
+				$text = str_replace(" $wrongWord.", " $correctWord.", $text);
+				$text = str_replace(" $wrongWord ", " $correctWord ", $text);
+				$text = str_replace(" $wrongWord,", " $correctWord,", $text);
+				$text = str_replace(" &nbsp;", " ", $text);
+				$text = str_replace("&nbsp; ", " ", $text);
+				$text = str_replace("  ", " ", $text);
+				$text = str_replace(" , ", ", ", $text);
+				$text = str_replace(" ,", ", ", $text);
+				$text = str_replace("  ,", ", ", $text);
+				$text = str_replace(" :", ": ", $text);
+				$text = str_replace('style="line-height: 1.6em;"', "", $text);
+			}
+		}
+
+		return $text;
 	}
 }
 
@@ -473,6 +499,7 @@ if (!function_exists("showContent")) {
 		$content = removeRareChars($content);
 		$content = str_replace("{{CDN_SERVER}}", getCDN(), $content);
 		$content = str_replace("<p>&nbsp;</p>", "", $content);
+		$content = checkSpelling($content);
 
 		return setCode($content);		
 	}

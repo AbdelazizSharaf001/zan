@@ -566,17 +566,18 @@ class ZP_MongoDB extends ZP_Load
 	
 	public function update($criteria = false, $update = false, $options = false)
 	{	
+
 		if (is_null($this->collection) or !$criteria) {
 			return false;
 		}
-		
+
 		$options = ($options) ? $options : array("upsert" => true);
-		
+
 		if (!$update and is_array($this->data)) {
 			$update = $this->data;
 		}
-		
-		$this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->update($criteria, $update, $options);	
+
+		$response = $this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->update($criteria, array('$set' => $update), $options);
 		return true;
 	}
 

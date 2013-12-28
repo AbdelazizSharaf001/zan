@@ -121,8 +121,12 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
+				$text = str_replace(' style="line-height: 1.6em;"', "", $text);
 				$text = str_replace(' alt=""', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
+				$text = str_replace('<span>', "", $text);
+				$text = str_replace('</span>', "", $text);
+				$text = str_replace('<div style="page-break-after: always;"><span style="display: none;">&nbsp;</div>', '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>', $text);
 			}
 		}
 

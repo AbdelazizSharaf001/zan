@@ -9,11 +9,11 @@ if(!function_exists("checkSpelling")) {
 		
 		if (_get("verifySpelling") and $language == "Spanish") {
 			$words = include "www/lib/languages/spelling/spanish.php";
-			die(var_dump($words));
+			
 			foreach ($words as $wrongWord => $correctWord) {
 				$uWrongWord = ucfirst($wrongWord);
 				$uCorrectWord = ucfirst($correctWord);
-
+				if ($correctWord == "internet") die(var_dump($correctWord));
 				$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
 				$text = str_replace(" $uWrongWord.", " $uCorrectWord.", $text);
 				$text = str_replace(" $uWrongWord,", " $uCorrectWord,", $text);

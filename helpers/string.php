@@ -108,6 +108,10 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(".ó", ". Ó", $text);
 				$text = str_replace(".ú", ". Ú", $text);
 
+				$text = str_replace("www. ", "www.", $text);
+				$text = str_replace(" .Biz", ".biz", $text);
+				$text = str_replace(" .Com", ".com", $text);
+
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
 			}

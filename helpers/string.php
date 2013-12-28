@@ -40,7 +40,40 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(" ,", ", ", $text);
 				$text = str_replace("  ,", ", ", $text);
 				$text = str_replace(" :", ": ", $text);
-				
+				$text = str_replace("( ", "(", $text);
+				$text = str_replace("a(", "a (", $text);
+				$text = str_replace("b(", "b (", $text);
+				$text = str_replace("c(", "c (", $text);
+				$text = str_replace("d(", "d (", $text);
+				$text = str_replace("e(", "e (", $text);
+				$text = str_replace("f(", "f (", $text);
+				$text = str_replace("g(", "g (", $text);
+				$text = str_replace("h(", "h (", $text);
+				$text = str_replace("i(", "i (", $text);
+				$text = str_replace("j(", "j (", $text);
+				$text = str_replace("k(", "k (", $text);
+				$text = str_replace("l(", "l (", $text);
+				$text = str_replace("m(", "m (", $text);
+				$text = str_replace("n(", "n (", $text);
+				$text = str_replace("ñ(", "ñ (", $text);
+				$text = str_replace("o(", "o (", $text);
+				$text = str_replace("p(", "p (", $text);
+				$text = str_replace("q(", "q (", $text);
+				$text = str_replace("r(", "r (", $text);
+				$text = str_replace("s(", "s (", $text);
+				$text = str_replace("t(", "t (", $text);
+				$text = str_replace("u(", "u (", $text);
+				$text = str_replace("v(", "v (", $text);
+				$text = str_replace("w(", "w (", $text);
+				$text = str_replace("x(", "x (", $text);
+				$text = str_replace("y(", "y (", $text);
+				$text = str_replace("z(", "z (", $text);
+				$text = str_replace("á(", "á (", $text);
+				$text = str_replace("é(", "é (", $text);
+				$text = str_replace("í(", "í (", $text);
+				$text = str_replace("ó(", "ó (", $text);
+				$text = str_replace("ú(", "ú (", $text);
+
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
 			}

@@ -13,7 +13,7 @@ if(!function_exists("checkSpelling")) {
 			foreach ($words as $wrongWord => $correctWord) {
 				$uWrongWord = ucfirst($wrongWord);
 				$uCorrectWord = ucfirst($correctWord);
-				if ($wrongWord == "internet") die(var_dump($correctWord));
+				if ($wrongWord == "internet") die(var_dump($text));
 				$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
 				$text = str_replace(" $uWrongWord.", " $uCorrectWord.", $text);
 				$text = str_replace(" $uWrongWord,", " $uCorrectWord,", $text);

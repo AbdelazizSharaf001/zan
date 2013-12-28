@@ -13,15 +13,21 @@ if(!function_exists("checkSpelling")) {
 			foreach ($words as $wrongWord => $correctWord) {
 				$uWrongWord = ucfirst($wrongWord);
 				$uCorrectWord = ucfirst($correctWord);
-				if ($wrongWord == "internet") die(var_dump($text));
+
 				$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
 				$text = str_replace(" $uWrongWord.", " $uCorrectWord.", $text);
 				$text = str_replace(" $uWrongWord,", " $uCorrectWord,", $text);
 				$text = str_replace(",$uWrongWord", ", $uCorrectWord", $text);
+				$text = str_replace(" $uWrongWord?", " $uCorrectWord?", $text);
+				$text = str_replace("¿$uWrongWord ", "¿$uCorrectWord ", $text);
+
 				$text = str_replace(" $wrongWord.", " $correctWord.", $text);
 				$text = str_replace(" $wrongWord ", " $correctWord ", $text);
 				$text = str_replace(" $wrongWord,", " $correctWord,", $text);
 				$text = str_replace(",$wrongWord", ", $correctWord", $text);
+				$text = str_replace(" $wrongWord?", " $correctWord?", $text);
+				$text = str_replace("¿$wrongWord ", "¿$correctWord ", $text);
+				
 				$text = str_replace(" &nbsp;", " ", $text);
 				$text = str_replace("&nbsp; ", " ", $text);
 				$text = str_replace("  ", " ", $text);
@@ -30,6 +36,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(" ,", ", ", $text);
 				$text = str_replace("  ,", ", ", $text);
 				$text = str_replace(" :", ": ", $text);
+				
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
 			}

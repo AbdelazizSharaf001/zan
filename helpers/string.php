@@ -41,6 +41,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("  ,", ", ", $text);
 				$text = str_replace(" :", ": ", $text);
 				$text = str_replace("( ", "(", $text);
+				
 				$text = str_replace("a(", "a (", $text);
 				$text = str_replace("b(", "b (", $text);
 				$text = str_replace("c(", "c (", $text);
@@ -73,6 +74,39 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("í(", "í (", $text);
 				$text = str_replace("ó(", "ó (", $text);
 				$text = str_replace("ú(", "ú (", $text);
+
+				$text = str_replace(".a", ". A", $text);
+				$text = str_replace(".b", ". B", $text);
+				$text = str_replace(".c", ". C", $text);
+				$text = str_replace(".d", ". D", $text);
+				$text = str_replace(".e", ". E", $text);
+				$text = str_replace(".f", ". F", $text);
+				$text = str_replace(".g", ". G", $text);
+				$text = str_replace(".h", ". H", $text);
+				$text = str_replace(".i", ". I", $text);
+				$text = str_replace(".j", ". J", $text);
+				$text = str_replace(".k", ". K", $text);
+				$text = str_replace(".l", ". L", $text);
+				$text = str_replace(".m", ". M", $text);
+				$text = str_replace(".n", ". N", $text);
+				$text = str_replace(".ñ", ". Ñ", $text);
+				$text = str_replace(".o", ". O", $text);
+				$text = str_replace(".p", ". P", $text);
+				$text = str_replace(".q", ". Q", $text);
+				$text = str_replace(".r", ". R", $text);
+				$text = str_replace(".s", ". S", $text);
+				$text = str_replace(".t", ". T", $text);
+				$text = str_replace(".u", ". U", $text);
+				$text = str_replace(".v", ". V", $text);
+				$text = str_replace(".w", ". W", $text);
+				$text = str_replace(".x", ". X", $text);
+				$text = str_replace(".y", ". Y", $text);
+				$text = str_replace(".z", ". Z", $text);
+				$text = str_replace(".á", ". Á", $text);
+				$text = str_replace(".é", ". É", $text);
+				$text = str_replace(".í", ". Í", $text);
+				$text = str_replace(".ó", ". Ó", $text);
+				$text = str_replace(".ú", ". Ú", $text);
 
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);

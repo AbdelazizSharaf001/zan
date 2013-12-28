@@ -20,6 +20,8 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(",$uWrongWord", ", $uCorrectWord", $text);
 				$text = str_replace(" $uWrongWord?", " $uCorrectWord?", $text);
 				$text = str_replace("¿$uWrongWord ", "¿$uCorrectWord ", $text);
+				$text = str_replace(" $uWrongWord!", " $uCorrectWord!", $text);
+				$text = str_replace("¡$uWrongWord ", "¡$uCorrectWord ", $text);
 
 				$text = str_replace(" $wrongWord.", " $correctWord.", $text);
 				$text = str_replace(" $wrongWord ", " $correctWord ", $text);
@@ -27,6 +29,8 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(",$wrongWord", ", $correctWord", $text);
 				$text = str_replace(" $wrongWord?", " $correctWord?", $text);
 				$text = str_replace("¿$wrongWord ", "¿$correctWord ", $text);
+				$text = str_replace(" $wrongWord!", " $correctWord!", $text);
+				$text = str_replace("¡$wrongWord ", "¡$correctWord ", $text);
 				
 				$text = str_replace(" &nbsp;", " ", $text);
 				$text = str_replace("&nbsp; ", " ", $text);

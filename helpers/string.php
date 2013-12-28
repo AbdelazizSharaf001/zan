@@ -43,6 +43,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("  ,", ", ", $text);
 				$text = str_replace(" :", ": ", $text);
 				$text = str_replace("( ", "(", $text);
+				$text = str_replace(": )", " :)", $text);
 				
 				$text = str_replace("a(", "a (", $text);
 				$text = str_replace("b(", "b (", $text);
@@ -118,6 +119,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(". Jpg", ".jpg", $text);
 				$text = str_replace(". Png", ".png", $text);
 				$text = str_replace(". Gif", ".gif", $text);
+				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
@@ -126,6 +128,37 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
 				$text = str_replace('<span>', "", $text);
 				$text = str_replace('</span>', "", $text);
+				$text = str_replace('<strong> ', "<strong>", $text);
+				$text = str_replace(' </strong> ', "</strong>", $text);
+				$text = str_replace('<h3><strong>', "<h3>", $text);
+				$text = str_replace('</strong></h3>', "</h3>", $text);
+				$text = str_replace('<h1>', "<h3>", $text);
+				$text = str_replace('<h2>', "<h3>", $text);
+				$text = str_replace('<h4>', "<h3>", $text);
+				$text = str_replace('<h5>', "<h3>", $text);
+				$text = str_replace('<h6>', "<h3>", $text);
+				$text = str_replace('</h1>', "</h3>", $text);
+				$text = str_replace('</h2>', "</h3>", $text);
+				$text = str_replace('</h4>', "</h3>", $text);
+				$text = str_replace('</h5>', "</h3>", $text);
+				$text = str_replace('</h6>', "</h3>", $text);
+				$text = str_replace('document. ', "document.", $text);
+				$text = str_replace('Document. ', "document.", $text);
+				$text = str_replace('GetElementsByTagName ', "getElementsByTagName", $text);
+				$text = str_replace('GetElementsById ', "getElementsById", $text);
+				$text = str_replace('. Src', ".src", $text);
+				$text = str_replace(') [', ")[", $text);
+				$text = str_replace('. AppendChild ', ".appendChild", $text);
+				$text = str_replace('Write (', "write(", $text);
+
+
+
+				
+				$text = str_replace('CreateElement ', "createElement", $text);
+				$text = str_replace('( &#39;', "(&#39;", $text);
+				$text = str_replace('&#39; )', "&#39;)", $text);
+
+				$text = str_replace('<img ', '<img style="max-width: 450px;" ', $text);
 				$text = str_replace('<div style="page-break-after: always;"><span style="display: none;">&nbsp;</div>', '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>', $text);
 			}
 		}

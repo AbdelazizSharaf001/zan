@@ -119,6 +119,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 
 				$text = str_replace('style="line-height: 1.6em;"', "", $text);
+				$text = str_replace(' alt=""', "", $text);
 				$text = str_replace('<p>&nbsp;</p>', "", $text);
 			}
 		}

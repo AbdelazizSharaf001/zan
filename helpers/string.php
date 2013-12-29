@@ -150,9 +150,6 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(') [', ")[", $text);
 				$text = str_replace('. AppendChild ', ".appendChild", $text);
 				$text = str_replace('Write (', "write(", $text);
-
-
-
 				
 				$text = str_replace('CreateElement ', "createElement", $text);
 				$text = str_replace('( &#39;', "(&#39;", $text);

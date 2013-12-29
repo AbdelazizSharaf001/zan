@@ -566,7 +566,6 @@ class ZP_MongoDB extends ZP_Load
 	
 	public function update($criteria = false, $update = false, $options = false)
 	{	
-
 		if (is_null($this->collection) or !$criteria) {
 			return false;
 		}
@@ -576,9 +575,10 @@ class ZP_MongoDB extends ZP_Load
 		if (!$update and is_array($this->data)) {
 			$update = $this->data;
 		}
-
-		$response = $this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->update($criteria, array('$set' => $update), $options);
-		return true;
+	
+		$response = $this->Mongo->selectCollection(DB_NOSQL_DATABASE, $this->collection)->update($criteria, array('$set' => $update));
+		
+		return isset($response["updatedExisting"]) ? $response["updatedExisting"] : false;
 	}
 
 	public function upload($fname = "file")

@@ -23,7 +23,7 @@ class ZP_Data extends ZP_Load
 		}
 	}
 
-	public function process($data = null, $validations = false)
+	public function process($data = null, $validations = false, $decode = true)
 	{
 		if (is_array($validations)) {
 			foreach ($validations as $field => $validation) {
@@ -112,7 +112,7 @@ class ZP_Data extends ZP_Load
 		foreach ($POST as $field => $value) {
 			if (!in_array($field, $this->ignore)) { 
 				if (!isset($data[$this->rename($field)])) {
-					$data[$this->rename($field)] = decode(filter($value, "escape"));
+					$data[$this->rename($field)] = ($decode) ? decode(filter($value, "escape")) : filter($value, "escape");
 				}
 			}
 		}

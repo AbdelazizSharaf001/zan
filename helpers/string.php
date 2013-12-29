@@ -3,8 +3,22 @@ if (!defined("ACCESS")) {
 	die("Error: You don't have permission to access here...");
 }
 
+if(!function_exists("getImageFromHTML")) {
+	function getImageFromHTML($content) 
+	{
+		preg_match_all('/< *img[^>]*src *= *["\']?([^"\']*).(jpg|png|gif)/i', $content, $matches);
+
+		if (isset($matches[1][0]) and isset($matches[2][0])) {
+			return replaceCDN($matches[1][0] .'.'. $matches[2][0]);
+		} else {
+			return replaceCDN("{{CDN_SERVER}}/www/lib/files/images/default.png");
+		}
+	}
+}
+
 if(!function_exists("checkSpelling")) {
-	function checkSpelling($text) {
+	function checkSpelling($text) 
+	{
 		$language = whichLanguage();
 		
 		if (_get("verifySpelling") and $language == "Spanish") {
@@ -165,7 +179,8 @@ if(!function_exists("checkSpelling")) {
 }
 
 if (!function_exists("bbCode")) {
-	function bbCode($text) {
+	function bbCode($text) 
+	{
 		$text = trim($text);
 		$text = preg_replace_callback('/\[code\](.*?)\[\/code\]/ms', "escape", $text);
 		

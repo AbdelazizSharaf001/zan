@@ -126,13 +126,47 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(".ú", ". Ú", $text);
 
 				$text = str_replace("www. ", "www.", $text);
+
+				$text = str_replace("www.A", "www.a", $text);
+				$text = str_replace("www.B", "www.b", $text);
+				$text = str_replace("www.C", "www.c", $text);
+				$text = str_replace("www.D", "www.d", $text);
+				$text = str_replace("www.E", "www.e", $text);
+				$text = str_replace("www.F", "www.f", $text);
+				$text = str_replace("www.G", "www.g", $text);
+				$text = str_replace("www.H", "www.h", $text);
+				$text = str_replace("www.I", "www.i", $text);
+				$text = str_replace("www.J", "www.j", $text);
+				$text = str_replace("www.K", "www.k", $text);
+				$text = str_replace("www.L", "www.l", $text);
+				$text = str_replace("www.M", "www.m", $text);
+				$text = str_replace("www.N", "www.n", $text);
+				$text = str_replace("www.Ñ", "www.ñ", $text);
+				$text = str_replace("www.O", "www.o", $text);
+				$text = str_replace("www.P", "www.p", $text);
+				$text = str_replace("www.Q", "www.q", $text);
+				$text = str_replace("www.R", "www.r", $text);
+				$text = str_replace("www.S", "www.s", $text);
+				$text = str_replace("www.T", "www.t", $text);
+				$text = str_replace("www.U", "www.u", $text);
+				$text = str_replace("www.V", "www.v", $text);
+				$text = str_replace("www.W", "www.w", $text);
+				$text = str_replace("www.X", "www.x", $text);
+				$text = str_replace("www.Y", "www.y", $text);
+				$text = str_replace("www.Z", "www.z", $text);
+
 				$text = str_replace(". Biz", ".biz", $text);
 				$text = str_replace(". Com", ".com", $text);
+				$text = str_replace(". Gob. Mx", ".gob.mx", $text);
+				$text = str_replace(". Cl/", ".cl/", $text);
+				$text = str_replace(". Mx", ".mx", $text);
 				$text = str_replace(". Net", ".net", $text);
 				$text = str_replace(". Org", ".org", $text);
 				$text = str_replace(". Jpg", ".jpg", $text);
 				$text = str_replace(". Png", ".png", $text);
 				$text = str_replace(". Gif", ".gif", $text);
+				$text = str_replace(". Aspx", ".aspx", $text);
+				$text = str_replace(". Php", ".php", $text);
 				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 

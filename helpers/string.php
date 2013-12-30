@@ -124,6 +124,16 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(".í", ". Í", $text);
 				$text = str_replace(".ó", ". Ó", $text);
 				$text = str_replace(".ú", ". Ú", $text);
+				$text = str_replace(".&aacute;", ". Á", $text);
+				$text = str_replace(". &aacute;", ". Á", $text);
+				$text = str_replace(".&eacute;", ". É", $text);
+				$text = str_replace(". &eacute;", ". É", $text);
+				$text = str_replace(".&iacute;", ". Í", $text);
+				$text = str_replace(". &iacute;", ". Í", $text);
+				$text = str_replace(".&oacute;", ". Ó", $text);
+				$text = str_replace(". &oacute;", ". Ó", $text);
+				$text = str_replace(".&uacute;", ". Ú", $text);
+				$text = str_replace(". &uacute;", ". Ú", $text);
 
 				$text = str_replace("www. ", "www.", $text);
 

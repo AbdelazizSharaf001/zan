@@ -162,6 +162,8 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(". Mx/", ".mx/", $text);
 				$text = str_replace(". Net/", ".net/", $text);
 				$text = str_replace(". Org/", ".org/", $text);
+				$text = str_replace(". Co/", ".co/", $text);
+
 				$text = str_replace(". Jpg", ".jpg", $text);
 				$text = str_replace(". Png", ".png", $text);
 				$text = str_replace(". Gif", ".gif", $text);

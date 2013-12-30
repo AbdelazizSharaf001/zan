@@ -4,28 +4,29 @@ if (!defined("ACCESS")) {
 }
 
 if (!function_exists("paginate")) {
-	function paginate($count, $end, $start, $URL, $anchor = "#top", $new = false)
+	function paginate($count, $end, $start, $URL, $anchor = "#top", $new = false, $limit = 10)
 	{
 		$pageNav = null;
+		$increment = 5;
 
 		if ($count > $end) {				
 			$rest = $count % $end;	
 			$pages = ($rest === 0) ? $count / $end : (($count - $rest) / $end) + 1;
 
-			if ($pages > 10) {	
+			if ($pages > $limit) {	
 				$currentPage = ($start / $end) + 1;
 
 				if ($start === 0) {
 					$firstPage = 0;
-					$lastPage = 10;
-				} elseif ($currentPage >= 5 and $currentPage <= ($pages - 5)) {					
-					$firstPage = $currentPage - 5;
-					$lastPage = $currentPage + 5;					
-				} elseif ($currentPage < 5) {					
+					$lastPage = $limit;
+				} elseif ($currentPage >= $increment and $currentPage <= ($pages - $increment)) {					
+					$firstPage = $currentPage - $increment;
+					$lastPage = $currentPage + $increment;			
+				} elseif ($currentPage < $increment) {					
 					$firstPage = 0;
-					$lastPage = $currentPage + 5 + (5 - $currentPage);					
+					$lastPage = $currentPage + $increment + ($increment - $currentPage);					
 				} else {					
-					$firstPage = $currentPage - 5 - (($currentPage + 5) - $pages);
+					$firstPage = $currentPage - $increment - (($currentPage + $increment) - $pages);
 					$lastPage = $pages;					
 				}								
 			} else {			

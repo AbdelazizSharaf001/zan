@@ -225,7 +225,9 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace('CreateElement ', "createElement", $text);
 				$text = str_replace('( &#39;', "(&#39;", $text);
 				$text = str_replace('&#39; )', "&#39;)", $text);
-
+				
+				preg_replace("/<([a-z][a-z0-9]*)(?:[^>]*(\ssrc=['\"][^'\"]*['\"]))?[^>]*?(\/?)>/i", '<$1$2$3>', $text);
+				
 				$text = str_replace('<img ', '<img style="max-width: 450px;" ', $text);
 				$text = str_replace('<div style="page-break-after: always;"><span style="display: none;">&nbsp;</div>', '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>', $text);
 			}

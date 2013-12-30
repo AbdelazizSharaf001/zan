@@ -167,6 +167,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(". Gif", ".gif", $text);
 				$text = str_replace(". Aspx", ".aspx", $text);
 				$text = str_replace(". Php", ".php", $text);
+				$text = str_replace(". Html", ".html", $text);
 				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 

@@ -170,6 +170,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(". Html", ".html", $text);
 				$text = str_replace(". Usajobs", ".usajobs", $text);
 				$text = str_replace(". Gov/", ".gov/", $text);
+				$text = str_replace(". Americanexpress.com", ".americanexpress.com", $text);
 
 				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);

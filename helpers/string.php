@@ -157,6 +157,7 @@ if(!function_exists("checkSpelling")) {
 
 				$text = str_replace(". Biz/", ".biz/", $text);
 				$text = str_replace(". Com/", ".com/", $text);
+				$text = str_replace('. Com"', '.com"', $text);
 				$text = str_replace(". Gob. Mx/", ".gob.mx/", $text);
 				$text = str_replace(". Cl/", ".cl/", $text);
 				$text = str_replace(". Mx/", ".mx/", $text);

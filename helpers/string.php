@@ -155,19 +155,22 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("www.Y", "www.y", $text);
 				$text = str_replace("www.Z", "www.z", $text);
 
-				$text = str_replace(". Biz", ".biz", $text);
-				$text = str_replace(". Com", ".com", $text);
-				$text = str_replace(". Gob. Mx", ".gob.mx", $text);
+				$text = str_replace(". Biz/", ".biz/", $text);
+				$text = str_replace(". Com/", ".com/", $text);
+				$text = str_replace(". Gob. Mx/", ".gob.mx/", $text);
 				$text = str_replace(". Cl/", ".cl/", $text);
-				$text = str_replace(". Mx", ".mx", $text);
-				$text = str_replace(". Net", ".net", $text);
-				$text = str_replace(". Org", ".org", $text);
+				$text = str_replace(". Mx/", ".mx/", $text);
+				$text = str_replace(". Net/", ".net/", $text);
+				$text = str_replace(". Org/", ".org/", $text);
 				$text = str_replace(". Jpg", ".jpg", $text);
 				$text = str_replace(". Png", ".png", $text);
 				$text = str_replace(". Gif", ".gif", $text);
 				$text = str_replace(". Aspx", ".aspx", $text);
 				$text = str_replace(". Php", ".php", $text);
 				$text = str_replace(". Html", ".html", $text);
+				$text = str_replace(". Usajobs", ".usajobs", $text);
+				$text = str_replace(". Gov/", ".gov/", $text);
+
 				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);
 

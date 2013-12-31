@@ -184,11 +184,25 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace(". Php", ".php", $text);
 				$text = str_replace(". Html", ".html", $text);
 				$text = str_replace(". Htm", ".htm", $text);
+				
+				// Fix subdomains...
+				$pattern = '/[\w.]+\. \w+\.\w{3}(\.\w{2})?/i';
 
-				$text = str_replace(". Usajobs", ".usajobs", $text);
-				$text = str_replace(". Gov/", ".gov/", $text);
-				$text = str_replace(". Americanexpress.com", ".americanexpress.com", $text);
-				$text = str_replace(". Mashable.com", ".mashable.com", $text);
+				preg_match_all($pattern, $text, $matches, PREG_SET_ORDER); 
+				
+				$count = count($matches);
+				
+				if ($count > 0) {
+					for ($i = 0; $i < $count; $i++) {
+						$count2 = count($matches[$i]);
+				
+						for ($j = 0; $j < $count2; $j++) {
+							$subdomain = $matches[$i][$j];			
+							$correctSubdomain = str_replace(" ", "", strtolower($subdomain));
+							$text = str_replace($subdomain, $correctSubdomain, $text);
+						}		
+					}
+				}
 				
 				$text = str_replace(". Js", ".js", $text);
 				$text = str_replace("Cjfiles", "cjfiles", $text);

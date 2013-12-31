@@ -24,20 +24,221 @@ if(!function_exists("checkSpelling")) {
 		if (_get("verifySpelling") and $language == "Spanish") {
 			$words = include "www/lib/languages/spelling/spanish.php";
 			
-			foreach ($words as $wrongWord => $correctWord) {
+			preg_replace(array_keys($words), array_values($words), $text);
+			
+			preg_replace("/<([a-z][a-z0-9]*)(?:[^>]*(\ssrc=['\"][^'\"]*['\"]))?[^>]*?(\/?)>/i", '<$1$2$3>', $text);
+				
+			$text = str_replace('<img ', '<img style="max-width: 450px;" ', $text);
+			$text = str_replace('<div style="page-break-after: always;"><span style="display: none;">&nbsp;</div>', '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>', $text);
+			
+			$text = str_replace(" &nbsp;", " ", $text);
+			$text = str_replace("&nbsp; ", " ", $text);
+			$text = str_replace(".&nbsp;", ". ", $text);
+	
+			$text = str_replace("  ", " ", $text);
+			$text = str_replace(" , ", ", ", $text);
+			$text = str_replace(" . ", ". ", $text);
+			$text = str_replace(" ,", ", ", $text);
+			$text = str_replace("  ,", ", ", $text);
+			$text = str_replace(" :", ": ", $text);
+			$text = str_replace("( ", "(", $text);
+			$text = str_replace(": )", " :)", $text);
+			
+			$text = str_replace("a(", "a (", $text);
+			$text = str_replace("b(", "b (", $text);
+			$text = str_replace("c(", "c (", $text);
+			$text = str_replace("d(", "d (", $text);
+			$text = str_replace("e(", "e (", $text);
+			$text = str_replace("f(", "f (", $text);
+			$text = str_replace("g(", "g (", $text);
+			$text = str_replace("h(", "h (", $text);
+			$text = str_replace("i(", "i (", $text);
+			$text = str_replace("j(", "j (", $text);
+			$text = str_replace("k(", "k (", $text);
+			$text = str_replace("l(", "l (", $text);
+			$text = str_replace("m(", "m (", $text);
+			$text = str_replace("n(", "n (", $text);
+			$text = str_replace("ñ(", "ñ (", $text);
+			$text = str_replace("o(", "o (", $text);
+			$text = str_replace("p(", "p (", $text);
+			$text = str_replace("q(", "q (", $text);
+			$text = str_replace("r(", "r (", $text);
+			$text = str_replace("s(", "s (", $text);
+			$text = str_replace("t(", "t (", $text);
+			$text = str_replace("u(", "u (", $text);
+			$text = str_replace("v(", "v (", $text);
+			$text = str_replace("w(", "w (", $text);
+			$text = str_replace("x(", "x (", $text);
+			$text = str_replace("y(", "y (", $text);
+			$text = str_replace("z(", "z (", $text);
+			$text = str_replace("á(", "á (", $text);
+			$text = str_replace("é(", "é (", $text);
+			$text = str_replace("í(", "í (", $text);
+			$text = str_replace("ó(", "ó (", $text);
+			$text = str_replace("ú(", "ú (", $text);
+	
+			$text = str_replace(".a", ". A", $text);
+			$text = str_replace(".b", ". B", $text);
+			$text = str_replace(".c", ". C", $text);
+			$text = str_replace(".d", ". D", $text);
+			$text = str_replace(".e", ". E", $text);
+			$text = str_replace(".f", ". F", $text);
+			$text = str_replace(".g", ". G", $text);
+			$text = str_replace(".h", ". H", $text);
+			$text = str_replace(".i", ". I", $text);
+			$text = str_replace(".j", ". J", $text);
+			$text = str_replace(".k", ". K", $text);
+			$text = str_replace(".l", ". L", $text);
+			$text = str_replace(".m", ". M", $text);
+			$text = str_replace(".n", ". N", $text);
+			$text = str_replace(".ñ", ". Ñ", $text);
+			$text = str_replace(".o", ". O", $text);
+			$text = str_replace(".p", ". P", $text);
+			$text = str_replace(".q", ". Q", $text);
+			$text = str_replace(".r", ". R", $text);
+			$text = str_replace(".s", ". S", $text);
+			$text = str_replace(".t", ". T", $text);
+			$text = str_replace(".u", ". U", $text);
+			$text = str_replace(".v", ". V", $text);
+			$text = str_replace(".w", ". W", $text);
+			$text = str_replace(".x", ". X", $text);
+			$text = str_replace(".y", ". Y", $text);
+			$text = str_replace(".z", ". Z", $text);
+			$text = str_replace(".á", ". Á", $text);
+			$text = str_replace(".é", ". É", $text);
+			$text = str_replace(".í", ". Í", $text);
+			$text = str_replace(".ó", ". Ó", $text);
+			$text = str_replace(".ú", ". Ú", $text);
+			$text = str_replace(".&aacute;", ". Á", $text);
+			$text = str_replace(". &aacute;", ". Á", $text);
+			$text = str_replace(".&eacute;", ". É", $text);
+			$text = str_replace(". &eacute;", ". É", $text);
+			$text = str_replace(".&iacute;", ". Í", $text);
+			$text = str_replace(". &iacute;", ". Í", $text);
+			$text = str_replace(".&oacute;", ". Ó", $text);
+			$text = str_replace(". &oacute;", ". Ó", $text);
+			$text = str_replace(".&uacute;", ". Ú", $text);
+			$text = str_replace(". &uacute;", ". Ú", $text);
+	
+			$text = str_replace("www. ", "www.", $text);
+	
+			$text = str_replace("www.A", "www.a", $text);
+			$text = str_replace("www.B", "www.b", $text);
+			$text = str_replace("www.C", "www.c", $text);
+			$text = str_replace("www.D", "www.d", $text);
+			$text = str_replace("www.E", "www.e", $text);
+			$text = str_replace("www.F", "www.f", $text);
+			$text = str_replace("www.G", "www.g", $text);
+			$text = str_replace("www.H", "www.h", $text);
+			$text = str_replace("www.I", "www.i", $text);
+			$text = str_replace("www.J", "www.j", $text);
+			$text = str_replace("www.K", "www.k", $text);
+			$text = str_replace("www.L", "www.l", $text);
+			$text = str_replace("www.M", "www.m", $text);
+			$text = str_replace("www.N", "www.n", $text);
+			$text = str_replace("www.Ñ", "www.ñ", $text);
+			$text = str_replace("www.O", "www.o", $text);
+			$text = str_replace("www.P", "www.p", $text);
+			$text = str_replace("www.Q", "www.q", $text);
+			$text = str_replace("www.R", "www.r", $text);
+			$text = str_replace("www.S", "www.s", $text);
+			$text = str_replace("www.T", "www.t", $text);
+			$text = str_replace("www.U", "www.u", $text);
+			$text = str_replace("www.V", "www.v", $text);
+			$text = str_replace("www.W", "www.w", $text);
+			$text = str_replace("www.X", "www.x", $text);
+			$text = str_replace("www.Y", "www.y", $text);
+			$text = str_replace("www.Z", "www.z", $text);
+	
+			$text = str_replace(". Biz/", ".biz/", $text);
+			$text = str_replace(". Com/", ".com/", $text);
+			$text = str_replace('. Com"', '.com"', $text);
+			$text = str_replace('. Com<', '.com<', $text);
+			$text = str_replace(". Gob. Mx/", ".gob.mx/", $text);
+			$text = str_replace(". Cl/", ".cl/", $text);
+			$text = str_replace(". Mx/", ".mx/", $text);
+			$text = str_replace(". Net/", ".net/", $text);
+			$text = str_replace(". Org/", ".org/", $text);
+			$text = str_replace(". Co/", ".co/", $text);
+			$text = str_replace(". Com.mx/", ".com.mx/", $text);
+	
+			$text = str_replace(". Jpg", ".jpg", $text);
+			$text = str_replace(". Png", ".png", $text);
+			$text = str_replace(". Gif", ".gif", $text);
+			$text = str_replace(". Aspx", ".aspx", $text);
+			$text = str_replace(". Php", ".php", $text);
+			$text = str_replace(". Html", ".html", $text);
+			$text = str_replace(". Htm", ".htm", $text);
+			
+			// Fix subdomains...
+			$pattern = '/[\w.]+\. \w+\.\w{3}(\.\w{2})?/i';
+	
+			preg_match_all($pattern, $text, $matches, PREG_SET_ORDER); 
+			
+			$count = count($matches);
+			
+			if ($count > 0) {
+				for ($i = 0; $i < $count; $i++) {
+					$count2 = count($matches[$i]);
+			
+					for ($j = 0; $j < $count2; $j++) {
+						$subdomain = $matches[$i][$j];			
+						$correctSubdomain = str_replace(" ", "", strtolower($subdomain));
+						$text = str_replace($subdomain, $correctSubdomain, $text);
+					}		
+				}
+			}
+			
+			$text = str_replace(". Js", ".js", $text);
+			$text = str_replace("Cjfiles", "cjfiles", $text);
+	
+			$text = str_replace('style="line-height: 1.6em;"', "", $text);
+			$text = str_replace(' style="line-height: 1.6em;"', "", $text);
+			$text = str_replace(' alt=""', "", $text);
+			$text = str_replace('<p>&nbsp;</p>', "", $text);
+			$text = str_replace('<span>', "", $text);
+			$text = str_replace('</span>', "", $text);
+			$text = str_replace('<strong> ', "<strong>", $text);
+			$text = str_replace(' </strong> ', "</strong>", $text);
+			$text = str_replace('<h3><strong>', "<h3>", $text);
+			$text = str_replace('</strong></h3>', "</h3>", $text);
+			$text = str_replace('<h1>', "<h3>", $text);
+			$text = str_replace('<h2>', "<h3>", $text);
+			$text = str_replace('<h4>', "<h3>", $text);
+			$text = str_replace('<h5>', "<h3>", $text);
+			$text = str_replace('<h6>', "<h3>", $text);
+			$text = str_replace('</h1>', "</h3>", $text);
+			$text = str_replace('</h2>', "</h3>", $text);
+			$text = str_replace('</h4>', "</h3>", $text);
+			$text = str_replace('</h5>', "</h3>", $text);
+			$text = str_replace('</h6>', "</h3>", $text);
+			$text = str_replace('document. ', "document.", $text);
+			$text = str_replace('Document. ', "document.", $text);
+			$text = str_replace('GetElementsByTagName ', "getElementsByTagName", $text);
+			$text = str_replace('GetElementsById ', "getElementsById", $text);
+			$text = str_replace('. Src', ".src", $text);
+			$text = str_replace(') [', ")[", $text);
+			$text = str_replace('. AppendChild ', ".appendChild", $text);
+			$text = str_replace('Write (', "write(", $text);
+			
+			$text = str_replace('CreateElement ', "createElement", $text);
+			$text = str_replace('( &#39;', "(&#39;", $text);
+			$text = str_replace('&#39; )', "&#39;)", $text);
+				
+			/*foreach ($words as $wrongWord => $correctWord) {
 				$uWrongWord = ucfirst($wrongWord);
 				$uCorrectWord = ucfirst($correctWord);
 
-				$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
+				/*$text = str_replace(" $uWrongWord ", " $uCorrectWord ", $text);
 				$text = str_replace(" $uWrongWord.", " $uCorrectWord.", $text);
 				$text = str_replace(" $uWrongWord,", " $uCorrectWord,", $text);
 				$text = str_replace(",$uWrongWord", ", $uCorrectWord", $text);
 				$text = str_replace(" $uWrongWord?", " $uCorrectWord?", $text);
 				$text = str_replace("¿$uWrongWord ", "¿$uCorrectWord ", $text);
 				$text = str_replace(" $uWrongWord!", " $uCorrectWord!", $text);
-				$text = str_replace("¡$uWrongWord ", "¡$uCorrectWord ", $text);
+				$text = str_replace("¡$uWrongWord ", "¡$uCorrectWord ", $text);*/
 
-				$text = str_replace(" $wrongWord.", " $correctWord.", $text);
+				/*$text = str_replace(" $wrongWord.", " $correctWord.", $text);
 				$text = str_replace(" $wrongWord ", " $correctWord ", $text);
 				$text = str_replace(" $wrongWord,", " $correctWord,", $text);
 				$text = str_replace(",$wrongWord", ", $correctWord", $text);
@@ -45,206 +246,7 @@ if(!function_exists("checkSpelling")) {
 				$text = str_replace("¿$wrongWord ", "¿$correctWord ", $text);
 				$text = str_replace(" $wrongWord!", " $correctWord!", $text);
 				$text = str_replace("¡$wrongWord ", "¡$correctWord ", $text);
-				
-				$text = str_replace(" &nbsp;", " ", $text);
-				$text = str_replace("&nbsp; ", " ", $text);
-				$text = str_replace(".&nbsp;", ". ", $text);
-
-				$text = str_replace("  ", " ", $text);
-				$text = str_replace(" , ", ", ", $text);
-				$text = str_replace(" . ", ". ", $text);
-				$text = str_replace(" ,", ", ", $text);
-				$text = str_replace("  ,", ", ", $text);
-				$text = str_replace(" :", ": ", $text);
-				$text = str_replace("( ", "(", $text);
-				$text = str_replace(": )", " :)", $text);
-				
-				$text = str_replace("a(", "a (", $text);
-				$text = str_replace("b(", "b (", $text);
-				$text = str_replace("c(", "c (", $text);
-				$text = str_replace("d(", "d (", $text);
-				$text = str_replace("e(", "e (", $text);
-				$text = str_replace("f(", "f (", $text);
-				$text = str_replace("g(", "g (", $text);
-				$text = str_replace("h(", "h (", $text);
-				$text = str_replace("i(", "i (", $text);
-				$text = str_replace("j(", "j (", $text);
-				$text = str_replace("k(", "k (", $text);
-				$text = str_replace("l(", "l (", $text);
-				$text = str_replace("m(", "m (", $text);
-				$text = str_replace("n(", "n (", $text);
-				$text = str_replace("ñ(", "ñ (", $text);
-				$text = str_replace("o(", "o (", $text);
-				$text = str_replace("p(", "p (", $text);
-				$text = str_replace("q(", "q (", $text);
-				$text = str_replace("r(", "r (", $text);
-				$text = str_replace("s(", "s (", $text);
-				$text = str_replace("t(", "t (", $text);
-				$text = str_replace("u(", "u (", $text);
-				$text = str_replace("v(", "v (", $text);
-				$text = str_replace("w(", "w (", $text);
-				$text = str_replace("x(", "x (", $text);
-				$text = str_replace("y(", "y (", $text);
-				$text = str_replace("z(", "z (", $text);
-				$text = str_replace("á(", "á (", $text);
-				$text = str_replace("é(", "é (", $text);
-				$text = str_replace("í(", "í (", $text);
-				$text = str_replace("ó(", "ó (", $text);
-				$text = str_replace("ú(", "ú (", $text);
-
-				$text = str_replace(".a", ". A", $text);
-				$text = str_replace(".b", ". B", $text);
-				$text = str_replace(".c", ". C", $text);
-				$text = str_replace(".d", ". D", $text);
-				$text = str_replace(".e", ". E", $text);
-				$text = str_replace(".f", ". F", $text);
-				$text = str_replace(".g", ". G", $text);
-				$text = str_replace(".h", ". H", $text);
-				$text = str_replace(".i", ". I", $text);
-				$text = str_replace(".j", ". J", $text);
-				$text = str_replace(".k", ". K", $text);
-				$text = str_replace(".l", ". L", $text);
-				$text = str_replace(".m", ". M", $text);
-				$text = str_replace(".n", ". N", $text);
-				$text = str_replace(".ñ", ". Ñ", $text);
-				$text = str_replace(".o", ". O", $text);
-				$text = str_replace(".p", ". P", $text);
-				$text = str_replace(".q", ". Q", $text);
-				$text = str_replace(".r", ". R", $text);
-				$text = str_replace(".s", ". S", $text);
-				$text = str_replace(".t", ". T", $text);
-				$text = str_replace(".u", ". U", $text);
-				$text = str_replace(".v", ". V", $text);
-				$text = str_replace(".w", ". W", $text);
-				$text = str_replace(".x", ". X", $text);
-				$text = str_replace(".y", ". Y", $text);
-				$text = str_replace(".z", ". Z", $text);
-				$text = str_replace(".á", ". Á", $text);
-				$text = str_replace(".é", ". É", $text);
-				$text = str_replace(".í", ". Í", $text);
-				$text = str_replace(".ó", ". Ó", $text);
-				$text = str_replace(".ú", ". Ú", $text);
-				$text = str_replace(".&aacute;", ". Á", $text);
-				$text = str_replace(". &aacute;", ". Á", $text);
-				$text = str_replace(".&eacute;", ". É", $text);
-				$text = str_replace(". &eacute;", ". É", $text);
-				$text = str_replace(".&iacute;", ". Í", $text);
-				$text = str_replace(". &iacute;", ". Í", $text);
-				$text = str_replace(".&oacute;", ". Ó", $text);
-				$text = str_replace(". &oacute;", ". Ó", $text);
-				$text = str_replace(".&uacute;", ". Ú", $text);
-				$text = str_replace(". &uacute;", ". Ú", $text);
-
-				$text = str_replace("www. ", "www.", $text);
-
-				$text = str_replace("www.A", "www.a", $text);
-				$text = str_replace("www.B", "www.b", $text);
-				$text = str_replace("www.C", "www.c", $text);
-				$text = str_replace("www.D", "www.d", $text);
-				$text = str_replace("www.E", "www.e", $text);
-				$text = str_replace("www.F", "www.f", $text);
-				$text = str_replace("www.G", "www.g", $text);
-				$text = str_replace("www.H", "www.h", $text);
-				$text = str_replace("www.I", "www.i", $text);
-				$text = str_replace("www.J", "www.j", $text);
-				$text = str_replace("www.K", "www.k", $text);
-				$text = str_replace("www.L", "www.l", $text);
-				$text = str_replace("www.M", "www.m", $text);
-				$text = str_replace("www.N", "www.n", $text);
-				$text = str_replace("www.Ñ", "www.ñ", $text);
-				$text = str_replace("www.O", "www.o", $text);
-				$text = str_replace("www.P", "www.p", $text);
-				$text = str_replace("www.Q", "www.q", $text);
-				$text = str_replace("www.R", "www.r", $text);
-				$text = str_replace("www.S", "www.s", $text);
-				$text = str_replace("www.T", "www.t", $text);
-				$text = str_replace("www.U", "www.u", $text);
-				$text = str_replace("www.V", "www.v", $text);
-				$text = str_replace("www.W", "www.w", $text);
-				$text = str_replace("www.X", "www.x", $text);
-				$text = str_replace("www.Y", "www.y", $text);
-				$text = str_replace("www.Z", "www.z", $text);
-
-				$text = str_replace(". Biz/", ".biz/", $text);
-				$text = str_replace(". Com/", ".com/", $text);
-				$text = str_replace('. Com"', '.com"', $text);
-				$text = str_replace('. Com<', '.com<', $text);
-				$text = str_replace(". Gob. Mx/", ".gob.mx/", $text);
-				$text = str_replace(". Cl/", ".cl/", $text);
-				$text = str_replace(". Mx/", ".mx/", $text);
-				$text = str_replace(". Net/", ".net/", $text);
-				$text = str_replace(". Org/", ".org/", $text);
-				$text = str_replace(". Co/", ".co/", $text);
-				$text = str_replace(". Com.mx/", ".com.mx/", $text);
-
-				$text = str_replace(". Jpg", ".jpg", $text);
-				$text = str_replace(". Png", ".png", $text);
-				$text = str_replace(". Gif", ".gif", $text);
-				$text = str_replace(". Aspx", ".aspx", $text);
-				$text = str_replace(". Php", ".php", $text);
-				$text = str_replace(". Html", ".html", $text);
-				$text = str_replace(". Htm", ".htm", $text);
-				
-				// Fix subdomains...
-				$pattern = '/[\w.]+\. \w+\.\w{3}(\.\w{2})?/i';
-
-				preg_match_all($pattern, $text, $matches, PREG_SET_ORDER); 
-				
-				$count = count($matches);
-				
-				if ($count > 0) {
-					for ($i = 0; $i < $count; $i++) {
-						$count2 = count($matches[$i]);
-				
-						for ($j = 0; $j < $count2; $j++) {
-							$subdomain = $matches[$i][$j];			
-							$correctSubdomain = str_replace(" ", "", strtolower($subdomain));
-							$text = str_replace($subdomain, $correctSubdomain, $text);
-						}		
-					}
-				}
-				
-				$text = str_replace(". Js", ".js", $text);
-				$text = str_replace("Cjfiles", "cjfiles", $text);
-
-				$text = str_replace('style="line-height: 1.6em;"', "", $text);
-				$text = str_replace(' style="line-height: 1.6em;"', "", $text);
-				$text = str_replace(' alt=""', "", $text);
-				$text = str_replace('<p>&nbsp;</p>', "", $text);
-				$text = str_replace('<span>', "", $text);
-				$text = str_replace('</span>', "", $text);
-				$text = str_replace('<strong> ', "<strong>", $text);
-				$text = str_replace(' </strong> ', "</strong>", $text);
-				$text = str_replace('<h3><strong>', "<h3>", $text);
-				$text = str_replace('</strong></h3>', "</h3>", $text);
-				$text = str_replace('<h1>', "<h3>", $text);
-				$text = str_replace('<h2>', "<h3>", $text);
-				$text = str_replace('<h4>', "<h3>", $text);
-				$text = str_replace('<h5>', "<h3>", $text);
-				$text = str_replace('<h6>', "<h3>", $text);
-				$text = str_replace('</h1>', "</h3>", $text);
-				$text = str_replace('</h2>', "</h3>", $text);
-				$text = str_replace('</h4>', "</h3>", $text);
-				$text = str_replace('</h5>', "</h3>", $text);
-				$text = str_replace('</h6>', "</h3>", $text);
-				$text = str_replace('document. ', "document.", $text);
-				$text = str_replace('Document. ', "document.", $text);
-				$text = str_replace('GetElementsByTagName ', "getElementsByTagName", $text);
-				$text = str_replace('GetElementsById ', "getElementsById", $text);
-				$text = str_replace('. Src', ".src", $text);
-				$text = str_replace(') [', ")[", $text);
-				$text = str_replace('. AppendChild ', ".appendChild", $text);
-				$text = str_replace('Write (', "write(", $text);
-				
-				$text = str_replace('CreateElement ', "createElement", $text);
-				$text = str_replace('( &#39;', "(&#39;", $text);
-				$text = str_replace('&#39; )', "&#39;)", $text);
-				
-				preg_replace("/<([a-z][a-z0-9]*)(?:[^>]*(\ssrc=['\"][^'\"]*['\"]))?[^>]*?(\/?)>/i", '<$1$2$3>', $text);
-				
-				$text = str_replace('<img ', '<img style="max-width: 450px;" ', $text);
-				$text = str_replace('<div style="page-break-after: always;"><span style="display: none;">&nbsp;</div>', '<div style="page-break-after: always;"><span style="display: none;">&nbsp;</span></div>', $text);
-			}
+			}*/
 		}
 
 		return $text;

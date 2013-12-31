@@ -24,7 +24,7 @@ if(!function_exists("checkSpelling")) {
 		if (_get("verifySpelling") and $language == "Spanish") {
 			$words = include "www/lib/languages/spelling/spanish.php";
 			
-			preg_replace(array_keys($words), array_values($words), $text);
+			$text = preg_replace(array_keys($words), array_values($words), $text);
 			
 			preg_replace("/<([a-z][a-z0-9]*)(?:[^>]*(\ssrc=['\"][^'\"]*['\"]))?[^>]*?(\/?)>/i", '<$1$2$3>', $text);
 				

@@ -23,6 +23,8 @@ if(!function_exists("checkSpelling")) {
 		
 		if (_get("verifySpelling") and $language == "Spanish") {
 			$words = include "www/lib/languages/spelling/spanish.php";
+			var_dump(array_keys($words)); echo "<br>";
+			var_dump(array_values($words));
 			
 			preg_replace(array_keys($words), array_values($words), $text);
 			

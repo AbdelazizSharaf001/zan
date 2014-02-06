@@ -330,7 +330,7 @@ if (!function_exists("addCDN")) {
 if (!function_exists("getCDN")) {
 	function getCDN() 
 	{
-		if (_get("cdnStatus") and count(_get("cdnServers")) > 0) {
+		if (_get("environment") > 1 and _get("cdnStatus") and count(_get("cdnServers")) > 0) {
 			$cdnServers = _get("cdnServers");
 			$count = count($cdnServers) - 1;
 

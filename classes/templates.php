@@ -387,11 +387,11 @@ class ZP_Templates extends ZP_Load
 				include $template;
 			}
 		} else { 
-			$_name = $template;		
-			$template = "www/lib/themes/$this->theme/$_name.php"; 
-			$minTemplate = "www/lib/themes/$this->theme/min/$_name.php";
+			$templateName = $template;		
+			$template = "www/lib/themes/$this->theme/$templateName.php"; 
+			$minTemplate = "www/lib/themes/$this->theme/min/$templateName.php";
 
-			if (_get("environment") > 2 and file_exists($minTemplate)) {
+			if (_get("minifyCode") and file_exists($minTemplate)) {
 				$template = $minTemplate;
 			}
 

@@ -930,20 +930,22 @@ if (!function_exists("removeSpaces")) {
 }
 
 if (!function_exists("social")) {
-	function social($type = "horizontal")
+	function social($type = "horizontal", $title, $URL)
 	{
+		$display = 'st_title="'. $title .'" st_url="'. $URL .'"';
+
 		if ($type == "horizontal") {
-			return '<span class="st_facebook_hcount" displayText="Facebook"></span>
-					<span class="st_twitter_hcount" displayText="Tweet"></span>
-					<span class="st_linkedin_hcount" displayText="LinkedIn"></span>
-					<span class="st_plusone_hcount" displayText="Google +1"></span>';
+			return '<span '. $display .' st_via="codejobs" class="st_facebook_hcount" displayText="Facebook"></span>
+					<span '. $display .' st_via="codejobs" class="st_twitter_hcount" displayText="Tweet"></span>
+					<span '. $display .' st_via="codejobs" class="st_linkedin_hcount" displayText="LinkedIn"></span>
+					<span '. $display .' st_via="codejobs" class="st_plusone_hcount" displayText="Google +1"></span>';
 		} else {
-			return '<span class="st_facebook_vcount" displayText="Facebook"></span>
-					<span class="st_twitter_vcount" displayText="Tweet"></span>
-					<span class="st_linkedin_vcount" displayText="LinkedIn"></span>
-					<span class="st_delicious_vcount" displayText="Delicious"></span>
-					<span class="st_tumblr_vcount" displayText="Tumblr"></span>
-					<span class="st_plusone_vcount" displayText="Google +1"></span>';
+			return '<span '. $display .' st_via="codejobs" class="st_facebook_vcount" displayText="Facebook"></span>
+					<span '. $display .' st_via="codejobs" class="st_twitter_vcount" displayText="Tweet"></span>
+					<span '. $display .' st_via="codejobs" class="st_linkedin_vcount" displayText="LinkedIn"></span>
+					<span '. $display .' st_via="codejobs" class="st_delicious_vcount" displayText="Delicious"></span>
+					<span '. $display .' st_via="codejobs" class="st_tumblr_vcount" displayText="Tumblr"></span>
+					<span '. $display .' st_via="codejobs" class="st_plusone_vcount" displayText="Google +1"></span>';
 		}
 	}
 }

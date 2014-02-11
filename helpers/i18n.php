@@ -252,7 +252,7 @@ if (!function_exists("getLanguagesFromDir")) {
 		$path = "www/lib/languages";
 		$dir = dir($path);
 		$i = 1;
-		
+		die(var_dump($dir));
 		while ($element = $dir->read()) { 
 			if ($element !== ".." and $element !== "." and $element !== ".DS_Store" and $element !== "index.html") {
 				$language = str_replace("language.", "", $element);

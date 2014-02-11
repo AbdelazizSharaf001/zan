@@ -252,6 +252,7 @@ if (!function_exists("getLanguagesFromDir")) {
 		$path = "www/lib/languages";
 		$dir = dir($path);
 		$i = 1;
+		$languages = array();
 		
 		while ($element = $dir->read()) { 
 			if ($element !== ".." and $element !== "." and $element !== ".DS_Store" and $element !== "index.html") {
@@ -267,8 +268,9 @@ if (!function_exists("getLanguagesFromDir")) {
 				}
 			}
 		}	
-		die(var_dump($languages));
-		$dir->close();		
+	
+		$dir->close();
+
 		return $languages;
 	}
 }

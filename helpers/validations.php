@@ -60,7 +60,7 @@ if (!function_exists("isInjection")) {
 				return true;
 			} elseif (substr_count($text, "<script") >= $count) {
 				return true;
-			} elseif (substr_count($text, "<if rame") >= $count) {
+			} elseif (substr_count($text, "<iframe") >= $count) {
 				return true;
 			}	
 		}

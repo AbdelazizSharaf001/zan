@@ -56,13 +56,13 @@ if (!function_exists("paginate")) {
 		}		
 
 		if ($new) {
-			$pagination = '	<div class="pagination pagination-large pull-left">
+			$pagination = '	<div class="row"><div class="span9"><div class="pagination pagination-large pull-left">
 								<ul>';
 
 			$pagination .= $pagePrevious . $pageNav . $pageNext;
 
 			$pagination .= '	</ul>
-							</div>';
+							</div></div></div>';
 							
 			return $pagination;
 		} else {

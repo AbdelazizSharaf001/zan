@@ -461,7 +461,7 @@ if (!function_exists("getAd")) {
 			$ad = '<script type="text/javascript">google_ad_client = "'. AD_CLIENT .'";google_ad_slot = "'. AD_SLOT_MEDIUM .'";google_ad_width = '. AD_WIDTH_MEDIUM .';google_ad_height = '. AD_HEIGHT_MEDIUM .';</script>';
 		}
 
-		if (_get("environment") === 4) { die("ads");
+		if (_get("environment") === 4) {
 			return $ad .'<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
 		}
 

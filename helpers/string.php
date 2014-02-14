@@ -191,9 +191,9 @@ if (!function_exists("createURL")) {
 if (!function_exists("display")) {
 	function display($content = null, $environment = true, $language = true)
 	{
-		if ($content and ($environment === true or _get("environment") === $environment) and $language === true) {
+		if ($content and ($environment === true or _get("environment") <= $environment) and $language === true) {
 			return $content;
-		} elseif ($content and ($environment === true or _get("environment") === $environment) and $language === whichLanguage()) {
+		} elseif ($content and ($environment === true or _get("environment") <= $environment) and $language === whichLanguage()) {
 			return $content;
 		}
 

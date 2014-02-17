@@ -93,19 +93,27 @@ class ZP_RESTClient extends ZP_Load
 		}
 		
 		if ($ch = curl_init($this->URL)) {
+			curl_setopt($ch, CURLOPT_URL, $this->URL);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			
+			if (_get("environment") <= 3) { 
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			}
+
 			if ($this->auth) {
 				curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
 				curl_setopt($ch, CURLOPT_USERPWD, $this->username .":". $this->password);
 			}
 			
-			$response = curl_exec($ch);
 			$status = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
-			curl_close($ch);
+			$response = curl_exec($ch);
 			
+			curl_close($ch);
+			$ch = curl_init();
+
+
 			if ($status === 200) {
 				if ($return) {
 					return $response;

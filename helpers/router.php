@@ -346,7 +346,7 @@ if (!function_exists("getCDN")) {
 if (!function_exists("path")) {
 	function path($path = false, $URL = false, $lang = true, $anchor = false)
 	{
-		if (_get("cdnStatus") and count(_get("cdnServers")) > 0) {
+		if (_get("cdnStatus") and count(_get("cdnServers")) > 0 and strstr($path, "www/applications") === false) {
 			$cdnServers = _get("cdnServers");
 			$count = count($cdnServers) - 1;
 

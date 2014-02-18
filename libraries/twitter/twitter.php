@@ -371,7 +371,7 @@ class EpiOAuth
     switch($this->signatureMethod)
     {
       case 'HMAC-SHA1':
-        $key = $this->encode_rfc3986($this->consumerSecret) . '&' . $this->encode_rfc3986($this->tokenSecret);
+        $key = $this->encode_rfc3986($this->consumerSecret) . ':' . $this->encode_rfc3986($this->tokenSecret);
         $retval = base64_encode(hash_hmac('sha1', $string, $key, true));
         break;
     }

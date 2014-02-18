@@ -455,7 +455,7 @@ class EpiTwitter extends EpiOAuth
    * The Twitter API version 1.0 search URL.
    * @var string
    */
-  protected $searchUrl      = 'http://search.twitter.com';
+  protected $searchUrl      = 'https://search.twitter.com';
 
   /* OAuth methods */
   public function delete($endpoint, $params = null)

@@ -462,7 +462,7 @@ if (!function_exists("getAd")) {
 		}
 
 		if (_get("environment") === 4) {
-			return $ad .'<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
+			return $ad .'<script async type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
 		}
 
 		return null;
@@ -939,7 +939,7 @@ if (!function_exists("social")) {
 					<span '. $display .' st_via="codejobs" class="st_twitter_hcount" displayText="Tweet"></span>
 					<span '. $display .' st_via="codejobs" class="st_linkedin_hcount" displayText="LinkedIn"></span>
 					<span '. $display .' st_via="codejobs" class="st_plusone_hcount" displayText="Google +1"></span>';
-		} else {
+		} else { die(var_dump($type));
 			return '<span '. $display .' st_via="codejobs" class="st_facebook_vcount" displayText="Facebook"></span>
 					<span '. $display .' st_via="codejobs" class="st_twitter_vcount" displayText="Tweet"></span>
 					<span '. $display .' st_via="codejobs" class="st_linkedin_vcount" displayText="LinkedIn"></span>

@@ -939,7 +939,7 @@ if (!function_exists("social")) {
 					<span '. $display .' st_via="codejobs" class="st_twitter_hcount" displayText="Tweet"></span>
 					<span '. $display .' st_via="codejobs" class="st_linkedin_hcount" displayText="LinkedIn"></span>
 					<span '. $display .' st_via="codejobs" class="st_plusone_hcount" displayText="Google +1"></span>';
-		} else { die(var_dump($type));
+		} else {
 			return '<span '. $display .' st_via="codejobs" class="st_facebook_vcount" displayText="Facebook"></span>
 					<span '. $display .' st_via="codejobs" class="st_twitter_vcount" displayText="Tweet"></span>
 					<span '. $display .' st_via="codejobs" class="st_linkedin_vcount" displayText="LinkedIn"></span>

@@ -462,7 +462,7 @@ if (!function_exists("getAd")) {
 		}
 
 		if (_get("environment") === 4) {
-			return $ad .'<script async type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
+			return $ad .'<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
 		}
 
 		return null;

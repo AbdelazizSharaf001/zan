@@ -76,7 +76,7 @@ if (!function_exists("isIP")) {
 	}
 }
 if (!function_exists("isSPAM")) {
-	function isSPAM($string, $max = 0)
+	function isSPAM($string, $max = 1)
 	{
 		$words = array(	
 			"www", ".co.uk", ".jp", ".ch", ".info", ".mobi", ".us", ".ca", ".ws", ".ag", ".pl", "?????", "href",
@@ -94,7 +94,7 @@ if (!function_exists("isSPAM")) {
 			}
 		}
 
-		return ($count >= $max) ? true : false;
+		return ($count > $max) ? true : false;
 	}
 }
 

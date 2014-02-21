@@ -94,7 +94,7 @@ if (!function_exists("isSPAM")) {
 			}
 		}
 
-		return ($count > $max) ? true : false;
+		return ($count >= $max) ? true : false;
 	}
 }
 

@@ -498,7 +498,12 @@ if (!function_exists("showContent")) {
 		$content = str_replace("[Ad:336px]", '<p>'. getAd() .'</p>', $content);
 		$content = str_replace("[Ad:728px]", '<p>'. getAd("728px") .'</p>', $content);
 		$content = str_replace("[Ad:Block]", '<p>'. getAd("336px") .'</p>', $content);
-		$content = str_replace("[Ad:Sky]",   '<p>'. getAd("728px") .'</p>', $content);
+
+		$sizes = array("728px", "336px");
+		$rand  = rand(0, 1);
+
+		$content = str_replace("[Ad:Sky]",   '<p>'. getAd($sizes[$rand]) .'</p>', $content);
+
 		$content = str_replace("[ad:336px]", '<p>'. getAd() .'</p>', $content);
 		$content = str_replace("[ad:728px]", '<p>'. getAd("728px") .'</p>', $content);
 		$content = str_replace("[Ad:block]", '<p>'. getAd() .'</p>', $content);	

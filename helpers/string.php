@@ -449,20 +449,28 @@ if (!function_exists("getAd")) {
 	{
 		$size = strtolower($size);
 
+		$slot  = AD_SLOT_SKY; 
+		$width = AD_WIDTH_SKY;
+		$height = AD_HEIGHT_SKY;
+
 		if ($size === "block" or $size === "336px" or $size === "300px") {
-			$ad = '<script type="text/javascript">google_ad_client = "'. AD_CLIENT .'";google_ad_slot = "'. AD_SLOT_BLOCK .'";google_ad_width = '. AD_WIDTH_BLOCK .';google_ad_height = '. AD_HEIGHT_BLOCK .';</script>';
-		} elseif ($size === "sky" or $size === "728px") {
-			$ad = '<script type="text/javascript">google_ad_client = "'. AD_CLIENT .'";google_ad_slot = "'. AD_SLOT_SKY .'";google_ad_width = '. AD_WIDTH_SKY .';google_ad_height = '. AD_HEIGHT_SKY .';</script>';
+			$slot  = AD_SLOT_BLOCK; 
+			$width = AD_WIDTH_BLOCK;
+			$height = AD_HEIGHT_BLOCK;			
 		} elseif ($size === "medium" or $size === "234px") {
-			$ad = '<script type="text/javascript">google_ad_client = "'. AD_CLIENT .'";google_ad_slot = "'. AD_SLOT_MEDIUM .'";google_ad_width = '. AD_WIDTH_MEDIUM .';google_ad_height = '. AD_HEIGHT_MEDIUM .';</script>';			
+			$slot  = AD_SLOT_MEDIUM; 
+			$width = AD_WIDTH_MEDIUM;
+			$height = AD_HEIGHT_MEDIUM;
 		}
 
 		if (isMobile()) {
-			$ad = '<script type="text/javascript">google_ad_client = "'. AD_CLIENT .'";google_ad_slot = "'. AD_SLOT_MEDIUM .'";google_ad_width = '. AD_WIDTH_MEDIUM .';google_ad_height = '. AD_HEIGHT_MEDIUM .';</script>';
+			$slot  = AD_SLOT_MEDIUM; 
+			$width = AD_WIDTH_MEDIUM;
+			$height = AD_HEIGHT_MEDIUM;
 		}
 
 		if (_get("environment") === 4) {
-			return $ad .'<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>';
+			return '<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle" style="display:inline-block;width:'. $width .'px;height:'. $height .'px" data-ad-client="'. AD_CLIENT .'" data-ad-slot="'. $slot .'"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script>';
 		}
 
 		return null;
@@ -489,7 +497,7 @@ if (!function_exists("showContent")) {
 		$content = str_replace('<CoreLocation/CoreLocation.h>', '&lt;CoreLocation/CoreLocation.h&gt;', $content);	
 		$content = str_replace("[Ad:336px]", '<p>'. getAd() .'</p>', $content);
 		$content = str_replace("[Ad:728px]", '<p>'. getAd("728px") .'</p>', $content);
-		$content = str_replace("[Ad:Block]", '<p>'. getAd() .'</p>', $content);
+		$content = str_replace("[Ad:Block]", '<p>'. getAd("336px") .'</p>', $content);
 		$content = str_replace("[Ad:Sky]",   '<p>'. getAd("728px") .'</p>', $content);
 		$content = str_replace("[ad:336px]", '<p>'. getAd() .'</p>', $content);
 		$content = str_replace("[ad:728px]", '<p>'. getAd("728px") .'</p>', $content);

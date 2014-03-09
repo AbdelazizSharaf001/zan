@@ -75,11 +75,12 @@ if (!function_exists("isIP")) {
 		return filter_var($IP, FILTER_VALIDATE_IP) ? true : false;
 	}
 }
+
 if (!function_exists("isSPAM")) {
 	function isSPAM($string, $max = 1)
 	{
 		$words = array(	
-			"www", ".co.uk", ".jp", ".ch", ".info", ".mobi", ".us", ".ca", ".ws", ".ag", ".pl", "?????", "href",
+			"com", ".net", ".org", ".html", "www", ".co.uk", ".jp", ".ch", ".info", ".mobi", ".us", ".ca", ".ws", ".ag", ".pl", "?????", "href",
 			".com.co", ".net.co", ".com.ag", ".net.ag", ".it", ".fr", ".tv", ".am", ".asia", ".at", ".be", ".cc", ".de", ".es", ".com.es", ".eu", 
 			".fm", ".in", ".tk", ".com.mx", ".nl", ".nu", ".tw", ".vg", "sex", "porn", "fuck", "buy", "free", "dating", "viagra", "money", "dollars", 
 			"payment", "website", "games", "toys", "poker", "cheap", "[url]", "[/url]", "[url="
@@ -88,10 +89,8 @@ if (!function_exists("isSPAM")) {
 	    $count = 0;
 	    $string = strtolower($string);
 	    
-	    if (is_array($words)) {
-			foreach ($words as $word) {
-				$count += substr_count($string, $word);
-			}
+		foreach ($words as $word) {
+			$count += substr_count($string, $word);
 		}
 
 		return ($count >= $max) ? true : false;

@@ -80,6 +80,7 @@ if (!function_exists("isSPAM")) {
 	function isSPAM($string, $max = 1)
 	{
 		$words = array(	
+			"comment", "interesting", "blends", "studies", "have", "has", "suis", "`", "&", "aphthous",
 			".edu", ".com", ".net", ".org", ".html", "www", ".co.uk", ".jp", ".ch", ".info", ".mobi", ".us", ".ca", ".ws", ".ag", ".pl", "?????", "href",
 			".com.co", ".net.co", ".com.ag", ".net.ag", ".it", ".fr", ".tv", ".am", ".asia", ".at", ".be", ".cc", ".de", ".es", ".com.es", ".eu", 
 			".fm", ".in", ".tk", ".com.mx", ".nl", ".nu", ".tw", ".vg", "sex", "porn", "fuck", "buy", "free", "dating", "viagra", "money", "dollars", 
